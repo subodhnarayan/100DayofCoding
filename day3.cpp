@@ -29,3 +29,31 @@ public:
         return ans;
     }
 };
+
+Nth Fibonacci Number
+Matrix Partners India: Exclusive Job-A-Thon | Apply to 15+ Companies via 1 Hiring Challenge | 
+Contest LIVE right now!banner Given a positive integer n, find the nth fibonacci number. Since the answer can be very large, return the answer modulo 1000000007.
+Note: for the reference of this question take first fibonacci number to be 1.
+
+class Solution
+{
+public:
+    int nthFibonacci(int n)
+    {
+        if (n == 1 || n == 2)
+        {
+            return 1;
+        }
+        int a = 1;
+        int b = 2;
+        int sum = 0;
+        int mod = 1e9 + 7;
+        for (int i = 3; i < n; i++)
+        {
+            sum = (a + b) % mod;
+            a = b;
+            b = sum;
+        }
+        return sum;
+    }
+};
