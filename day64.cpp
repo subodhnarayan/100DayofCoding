@@ -34,34 +34,34 @@
 // 1 ≤ no. of nodes ≤ 103
 // 1 ≤ data of node ≤ 104
 
-// class Solution
-// {
-// public:
-//     // Function should return all the ancestor of the target node
-//     bool ances(Node *root, int target, vector<int> &an)
-//     {
-//         if (root == NULL)
-//         {
-//             return false;
-//         }
-//         if (root->data == target)
-//         {
-//             return true;
-//         }
-//         if (ances(root->left, target, an) || ances(root->right, target, an))
-//         {
-//             an.push_back(root->data);
-//             return true;
-//         }
-//         return false;
-//     }
-//     vector<int> Ancestors(struct Node *root, int target)
-//     {
-//         vector<int> pre;
-//         bool ch = ances(root, target, pre);
-//         return pre;
-//     }
-// };
+class Solution
+{
+public:
+    // Function should return all the ancestor of the target node
+    bool ances(Node *root, int target, vector<int> &an)
+    {
+        if (root == NULL)
+        {
+            return false;
+        }
+        if (root->data == target)
+        {
+            return true;
+        }
+        if (ances(root->left, target, an) || ances(root->right, target, an))
+        {
+            an.push_back(root->data);
+            return true;
+        }
+        return false;
+    }
+    vector<int> Ancestors(struct Node *root, int target)
+    {
+        vector<int> pre;
+        bool ch = ances(root, target, pre);
+        return pre;
+    }
+};
 
 // Leetcode 7/7/2024
 
@@ -94,3 +94,25 @@
 
 // 1 <= numBottles <= 100
 // 2 <= numExchange <= 100
+
+
+
+class Solution {
+public:
+    int numWaterBottles(int numBottles, int numExchange) {
+        // int nb=numBottles;
+        // int ne=numExchange;
+        // int ans=nb;
+        // while(nb>=ne){
+        //     int rem=nb%ne;
+        //     int an=nb/ne;
+        //     ans=ans+an;
+        //     nb=rem+an;
+        // }
+        // return ans;
+        //TC=O(log N)
+
+        //Another Approach;
+        return numBottles+(numBottles-1)/(numExchange-1);
+    }
+};
