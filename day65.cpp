@@ -79,7 +79,7 @@ public:
     }
 };
 
-//Leetcode 8/7/2024
+// Leetcode 8/7/2024
 
 // 1823. Find the Winner of the Circular Game
 // Solved
@@ -98,10 +98,7 @@ public:
 // Else, the last friend in the circle wins the game.
 // Given the number of friends, n, and an integer k, return the winner of the game.
 
- 
-
 // Example 1:
-
 
 // Input: n = 5, k = 2
 // Output: 3
@@ -120,16 +117,82 @@ public:
 // Input: n = 6, k = 5
 // Output: 1
 // Explanation: The friends leave in this order: 5, 4, 6, 2, 3. The winner is friend 1.
- 
 
 // Constraints:
 
 // 1 <= k <= n <= 500
- 
 
 // Follow up:
 
 // Could you solve this problem in linear time with constant space?
 
+class Solution
+{
+public:
+    int findwinnerindex(int n, int k)
+    {
+        if (n == 1)
+        {
+            return 0;
+        } // base case
+        int idx = findwinnerindex(n - 1, k); // to find the index of the winner
+        idx = (idx + k) % n;
+        return idx;
+    }
+    int findTheWinner(int n, int k)
+    {
+        // vector<int> arr(n+1,1);
+        // arr[0]=0;
+        // int ans;
+        // int start=0;
+        // int K=n;
+        // while(K>1){
+        //    int diff=(start+k)%n;
+        //    arr[diff]=-1;
+        //    start=diff;
+        //    K--;
+        // }
+        // for(int i=1;i<n+1;i++){
+        //     if(arr[i]==1){
+        //         return i;
+        //     }
+        // }
+        // return 1;
+        // vector<int> friends;
+        // for (int i = 1; i <= n; ++i) {
+        //     friends.push_back(i);
+        // }
 
+        // int index = 0;
 
+        // while (friends.size() > 1) {
+        //     // Find the index of the friend to be eliminated
+        //     index = (index + k - 1) % friends.size();
+        //     // Eliminate the friend
+        //     friends.erase(friends.begin() + index);
+        // }
+
+        // return friends[0];  T.C=0(N2)
+
+        // another approach using queue
+
+        //    queue<int> q;
+        //    for(int i=1;i<=n;i++){
+        //     q.push(i);
+        //    }
+
+        //    while(q.size()>1){
+        //     for(int i=1;i<=k-1;i++){
+        //         q.push(q.front());
+        //         q.pop();
+
+        //     }
+        //     q.pop();
+        //    }
+        //    return q.front();  TC=O(n*k)
+
+        // Another solution with recursion with time complexity 0(N) and space complexity o(N)
+        int idx = findwinnerindex(n, k);
+        return idx + 1;
+    }
+};
