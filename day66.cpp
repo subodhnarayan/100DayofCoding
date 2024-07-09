@@ -21,3 +21,41 @@
 // -105 ≤ arr[i] ≤ 105
 // 1 ≤ target ≤ 105
 
+class Solution {
+  public:
+    int threeSumClosest(vector<int> arr, int target) {
+        int n = arr.size();
+    std::sort(arr.begin(), arr.end());  // Step 1: Sort the array
+    int closest_sum = INT_MAX / 2;  // Initialize closest_sum to a very large value
+
+    for (int i = 0; i < n - 2; ++i) {  // We need at least three numbers
+        int start = i + 1;
+        int end = n - 1;
+
+        while (start < end) {  // Step 2: Two-pointer technique
+            int current_sum = arr[i] + arr[start] + arr[end];
+
+            // Update the closest_sum if current_sum is closer to the target
+            if (std::abs(current_sum - target) < std::abs(closest_sum - target)) {
+                closest_sum = current_sum;
+            } else if (std::abs(current_sum - target) == std::abs(closest_sum - target)) {
+                // If the absolute difference is the same, choose the maximum sum
+                closest_sum = std::max(closest_sum, current_sum);
+            }
+
+            // Move pointers based on comparison with target
+            if (current_sum < target) {
+                ++start;
+            } else if (current_sum > target) {
+                --end;
+            } else {
+                // If current_sum is exactly equal to target, return the sum
+                return current_sum;
+            }
+        }
+    }
+
+    return closest_sum;  // Return the closest sum fou
+        
+    }
+};
