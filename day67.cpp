@@ -131,5 +131,4 @@ int minOperations(vector<string> &logs)
     }
     return count;
 }
-}
-;
+};
