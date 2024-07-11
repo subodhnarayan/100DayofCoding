@@ -1,5 +1,5 @@
 //GFG POTD 11/7/2024
-// Maximum Connected group
+Maximum Connected group
 // Difficulty: HardAccuracy: 49.48%Submissions: 34K+Points: 8
 // You are given a square binary grid. A grid is considered binary if every value in the grid is either 1 or 0. You can change at most one cell in the grid from 0 to 1. You need to find the largest group of connected  1's. Two cells are said to be connected if both are adjacent(top, bottom, left, right) to each other and both have the same value.
 
@@ -135,8 +135,7 @@ int dfs(int i, int j, vector<vector<int> >& grid,
 
 
 //Leetcode POTD 11/7/2024
-
-// 1190. Reverse Substrings Between Each Pair of Parentheses
+ 1190. Reverse Substrings Between Each Pair of Parentheses
 // Solved
 // Medium
 // Topics
