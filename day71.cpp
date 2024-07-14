@@ -95,3 +95,69 @@ public:
 // formula consists of English letters, digits, '(', and ')'.
 // formula is always valid.
 
+class Solution {
+public:
+    string countOfAtoms(string form) {
+        //same name ke liye na wo 
+         stack<unordered_map<string, int>> st;
+    st.push(unordered_map<string, int>());
+    int n = form.size();
+    int i = 0;
+
+    while (i < n) {
+        if (form[i] == '(') {
+            st.push(unordered_map<string, int>());
+            i++;  // Move past the '('
+        } else if (form[i] == ')') {
+            unordered_map<string, int> curr = st.top();
+            st.pop();
+            i++;  // Move past the ')'
+            string mul;
+            while (i < n && isdigit(form[i])) {
+                mul += form[i];
+                i++;
+            }
+            int multiplier = mul.empty() ? 1 : stoi(mul);
+
+            // Multiply counts in the current map
+            for (auto& ig : curr) {
+                ig.second *= multiplier;
+            }
+
+            // Merge current map into the previous map on the stack
+            for (const auto& it : curr) {
+                st.top()[it.first] += it.second;
+            }
+        } else {
+            string str;
+            str.push_back(form[i]);
+            i++;
+            while (i < n && islower(form[i])) {
+                str += form[i];
+                i++;
+            }
+
+            string mul;
+            while (i < n && isdigit(form[i])) {
+                mul += form[i];
+                i++;
+            }
+            int cnt = mul.empty() ? 1 : stoi(mul);
+            st.top()[str] += cnt;
+        }
+    }
+
+    // Sort the elements alphabetically
+    map<string, int> ans(begin(st.top()), end(st.top()));
+    string result;
+
+    for (const auto& it : ans) {
+        result += it.first;
+        if (it.second > 1) {
+            result += to_string(it.second);
+        }
+    }
+
+    return result;
+    }
+};
