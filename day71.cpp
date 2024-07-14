@@ -15,3 +15,32 @@
 // Expected Time Complexity: O(n)
 // Expected Auxiliary Space: O(1)
 
+class Solution
+{
+public:
+    void segregate0and1(vector<int> &arr)
+    {
+        int n = arr.size();
+        int zc = 0;
+        int oc = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (arr[i] == 0)
+            {
+                zc++;
+            }
+            else
+            {
+                oc++;
+            }
+        }
+        for (int i = 0; i < zc; i++)
+        {
+            arr[i] = 0;
+        }
+        for (int i = zc; i < n; i++)
+        {
+            arr[i] = 1;
+        }
+    }
+};
