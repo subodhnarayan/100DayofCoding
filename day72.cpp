@@ -85,3 +85,46 @@ public:
 // The binary tree described by descriptions is valid.
 
 
+class Solution {
+public:
+    
+    TreeNode* createBinaryTree(vector<vector<int>>& desc) {
+   
+    unordered_map<int,TreeNode*> mp;
+    unordered_set<int> st;  //store the chilset;
+    
+    for(vector<int> &m:desc){
+        int parent=m[0];
+        int child=m[1];
+        int  isleft=m[2];
+        if(mp.find(parent)==mp.end()){
+            mp[parent]=new TreeNode(parent);
+        }
+
+        if(mp.find(child)==mp.end()){
+            mp[child]=new TreeNode(child);
+        }
+
+        if(isleft==1){
+            mp[parent]->left=mp[child];
+        }
+        else{
+            mp[parent]->right=mp[child];
+        }
+
+        st.insert(child);
+
+    }
+
+    for(vector<int> &m:desc)
+    {
+        int parent=m[0];
+        if(st.find(parent)==st.end()){
+            return mp[parent];
+        }
+    }
+
+    return NULL;
+    }
+
+};
