@@ -42,46 +42,136 @@ public:
     }
 };
 
+// leetcode POTD
+2096. Step - By - Step Directions From a Binary Tree Node to Another
+    // Solved
+    // Medium
+    // Topics
+    // Companies
+    // Hint
+    // You are given the root of a binary tree with n nodes. Each node is uniquely assigned a value from 1 to n. You are also given an integer startValue representing the value of the start node s, and a different integer destValue representing the value of the destination node t.
 
-//leetcode POTD
-2096. Step-By-Step Directions From a Binary Tree Node to Another
-// Solved
-// Medium
-// Topics
-// Companies
-// Hint
-// You are given the root of a binary tree with n nodes. Each node is uniquely assigned a value from 1 to n. You are also given an integer startValue representing the value of the start node s, and a different integer destValue representing the value of the destination node t.
+    // Find the shortest path starting from node s and ending at node t. Generate step-by-step directions of such path as a string consisting of only the uppercase letters 'L', 'R', and 'U'. Each letter indicates a specific direction:
 
-// Find the shortest path starting from node s and ending at node t. Generate step-by-step directions of such path as a string consisting of only the uppercase letters 'L', 'R', and 'U'. Each letter indicates a specific direction:
+    // 'L' means to go from a node to its left child node.
+    // 'R' means to go from a node to its right child node.
+    // 'U' means to go from a node to its parent node.
+    // Return the step-by-step directions of the shortest path from node s to node t.
 
-// 'L' means to go from a node to its left child node.
-// 'R' means to go from a node to its right child node.
-// 'U' means to go from a node to its parent node.
-// Return the step-by-step directions of the shortest path from node s to node t.
+    // Example 1:
 
- 
+    // Input: root = [5,1,2,3,null,6,4], startValue = 3, destValue = 6
+    // Output: "UURL"
+    // Explanation: The shortest path is: 3 → 1 → 5 → 2 → 6.
+    // Example 2:
 
-// Example 1:
+    // Input: root = [2,1], startValue = 2, destValue = 1
+    // Output: "L"
+    // Explanation: The shortest path is: 2 → 1.
 
+    // Constraints:
 
-// Input: root = [5,1,2,3,null,6,4], startValue = 3, destValue = 6
-// Output: "UURL"
-// Explanation: The shortest path is: 3 → 1 → 5 → 2 → 6.
-// Example 2:
+    // The number of nodes in the tree is n.
+    // 2 <= n <= 105
+    // 1 <= Node.val <= n
+    // All the values in the tree are unique.
+    // 1 <= startValue, destValue <= n
+    // startValue != destValue
 
+    class Solution
+{
+public:
+    TreeNode *lowestcommonancestor(TreeNode *root, int src, int dest)
+    {
+        if (root == NULL)
+        {
+            return NULL;
+        }
+        if (root->val == src || root->val == dest)
+        {
+            return root;
+        }
+        TreeNode *l = lowestcommonancestor(root->left, src, dest);
+        TreeNode *r = lowestcommonancestor(root->right, src, dest);
 
-// Input: root = [2,1], startValue = 2, destValue = 1
-// Output: "L"
-// Explanation: The shortest path is: 2 → 1.
- 
+        if (l && r)
+        {
+            return root;
+        }
 
-// Constraints:
+        return l ? l : r;
+    }
 
-// The number of nodes in the tree is n.
-// 2 <= n <= 105
-// 1 <= Node.val <= n
-// All the values in the tree are unique.
-// 1 <= startValue, destValue <= n
-// startValue != destValue
+    bool findpath(TreeNode *lca, int target, string &str)
+    {
 
+        if (lca == NULL)
+        {
+            return false;
+        }
 
+        if (lca->val == target)
+        {
+            return true;
+        }
+
+        str.push_back('L');
+        if (findpath(lca->left, target, str) == true)
+        {
+            return true;
+        }
+        str.pop_back();
+
+        str.push_back('R');
+        if (findpath(lca->right, target, str) == true)
+        {
+            return true;
+        }
+
+        str.pop_back();
+
+        return false;
+    }
+    string getDirections(TreeNode *root, int startValue, int destValue)
+    {
+        string ans = "";
+        // TreeNode* lca=lowestcommonancestor(root,startValue,destValue);
+
+        // string lcatoSrc="";
+        // string lcatoDest="";
+
+        // findpath(lca,startValue,lcatoSrc);
+        // findpath(lca,destValue,lcatoDest);
+
+        // for(int i=0;i<lcatoSrc.size();i++){
+        //     ans.push_back('U');
+        // }
+        // ans+=lcatoDest;
+        // return ans;   //tc=0(N)
+
+        // Another approch
+        string rootStar = "";
+        string rootDest = "";
+
+        findpath(root, startValue, rootStar);
+        findpath(root, destValue, rootDest);
+
+        int i = 0;
+        while (rootStar[i] == rootDest[i])
+        {
+            i++;
+        }
+
+        for (int j = i; j < rootStar.size(); j++)
+        {
+            ans.push_back('U');
+        }
+
+        for (int j = i; j < rootDest.size(); j++)
+        {
+            ans.push_back(rootDest[j]);
+        }
+
+        return ans;
+    }
+};
