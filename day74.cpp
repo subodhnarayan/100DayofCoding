@@ -34,3 +34,40 @@ Given an array parent that is used to represent a tree. The array indices (0-bas
 
 // Constraints:
 // 1 ≤ parent.size() ≤ 103
+
+
+class Solution {
+  public:
+    // Function to construct binary tree from parent array.
+    Node *createTree(vector<int> parent) {
+        //first making the nodes of all the elements
+        
+        int n=parent.size();
+        vector<Node*> pt;
+        for(int i=0;i<n;i++){
+            pt.push_back(new Node(i));
+        }// made all the node 
+        
+        //now mapping all these nodes
+        
+        Node* head=NULL;
+        for(int i=0;i<n;i++){
+            if(parent[i]!=-1){
+                if((pt[parent[i]]->left)==NULL) 
+                {
+                    pt[parent[i]]->left=pt[i];
+                    
+                }
+                else
+                {
+                pt[parent[i]]->right=pt[i];
+                }
+            }
+            else{
+                head=pt[i];
+            }
+        }
+        return head;
+        
+    }
+};
