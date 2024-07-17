@@ -36,38 +36,70 @@ Given an array parent that is used to represent a tree. The array indices (0-bas
 // 1 ≤ parent.size() ≤ 103
 
 
-class Solution {
-  public:
+class Solution
+{
+public:
     // Function to construct binary tree from parent array.
-    Node *createTree(vector<int> parent) {
-        //first making the nodes of all the elements
-        
-        int n=parent.size();
-        vector<Node*> pt;
-        for(int i=0;i<n;i++){
+    Node *createTree(vector<int> parent)
+    {
+        // first making the nodes of all the elements
+
+        int n = parent.size();
+        vector<Node *> pt;
+        for (int i = 0; i < n; i++)
+        {
             pt.push_back(new Node(i));
-        }// made all the node 
-        
-        //now mapping all these nodes
-        
-        Node* head=NULL;
-        for(int i=0;i<n;i++){
-            if(parent[i]!=-1){
-                if((pt[parent[i]]->left)==NULL) 
+        } // made all the node
+
+        // now mapping all these nodes
+
+        Node *head = NULL;
+        for (int i = 0; i < n; i++)
+        {
+            if (parent[i] != -1)
+            {
+                if ((pt[parent[i]]->left) == NULL)
                 {
-                    pt[parent[i]]->left=pt[i];
-                    
+                    pt[parent[i]]->left = pt[i];
                 }
                 else
                 {
-                pt[parent[i]]->right=pt[i];
+                    pt[parent[i]]->right = pt[i];
                 }
             }
-            else{
-                head=pt[i];
+            else
+            {
+                head = pt[i];
             }
         }
         return head;
-        
     }
 };
+
+// 1110. Delete Nodes And Return Forest
+// Solved
+// Medium
+// Topics
+// Companies
+// Given the root of a binary tree, each node in the tree has a distinct value.
+
+// After deleting all nodes with a value in to_delete, we are left with a forest (a disjoint union of trees).
+
+// Return the roots of the trees in the remaining forest. You may return the result in any order.
+
+// Example 1:
+
+// Input: root = [1,2,3,4,5,6,7], to_delete = [3,5]
+// Output: [[1,2,null,4],[6],[7]]
+// Example 2:
+
+// Input: root = [1,2,4,null,3], to_delete = [3]
+// Output: [[1,2,4]]
+
+// Constraints:
+
+// The number of nodes in the given tree is at most 1000.
+// Each node has a distinct value between 1 and 1000.
+// to_delete.length <= 1000
+// to_delete contains distinct values between 1 and 1000.
+
