@@ -1,8 +1,7 @@
+// GFG POTD 18/7/2024
 Longest alternating subsequence
-            Difficulty : MediumAccuracy : 38.32 %
-                         Submissions : 48K +
-    Points : 4
-    // You are given an array arr. Your task is to find the longest length of a good sequence. A good sequence {x1, x2, .. xn} is an alternating sequence if its elements satisfy one of the following relations :
+    // Difficulty : MediumAccuracy : 38.32 % Submissions : 48K + Points : 4
+    //  You are given an array arr. Your task is to find the longest length of a good sequence. A good sequence {x1, x2, .. xn} is an alternating sequence if its elements satisfy one of the following relations :
 
     // 1.  x1 < x2 > x3 < x4 > x5. . . . . and so on
     // 2.  x1 >x2 < x3 > x4 < x5. . . . . and so on
@@ -42,11 +41,9 @@ public:
     }
 };
 
-1530. Number of Good Leaf Nodes Pairs
-    Solved
-        Medium
-            Topics
-                Companies Hint
+GFG POTD 18 / 7 / 2024
+
+    1530. Number of Good Leaf Nodes Pairs Solved Medium Topics Companies Hint
     // You are given the root of a binary tree and an integer distance. A pair of two different leaf nodes of a binary tree is said to be good if the length of the shortest path between them is less than or equal to distance.
 
     // Return the number of good leaf node pairs in the tree.
