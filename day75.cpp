@@ -72,3 +72,75 @@ public:
     // The number of nodes in the tree is in the range [1, 210].
     // 1 <= Node.val <= 100
     // 1 <= distance <= 10
+
+    class Solution
+{
+public:
+    void makeGraph(TreeNode *root, TreeNode *prev, unordered_map<TreeNode *, vector<TreeNode *>> &adj,
+                   unordered_set<TreeNode *> &st)
+    {
+        if (root == NULL)
+        {
+            return;
+        }
+
+        if (root->left == NULL && root->right == NULL)
+        {
+            st.insert(root);
+        }
+
+        if (prev != NULL)
+        {
+            adj[root].push_back(prev);
+            adj[prev].push_back(root);
+        }
+
+        makeGraph(root->left, root, adj, st);
+        makeGraph(root->right, root, adj, st);
+    }
+
+    int countPairs(TreeNode *root, int distance)
+    {
+        unordered_map<TreeNode *, vector<TreeNode *>> adj;
+        unordered_set<TreeNode *> st;
+
+        makeGraph(root, NULL, adj, st);
+
+        int count = 0; // count of good node pairs
+
+        for (auto &leaf : st)
+        {
+
+            // bfs hit karo and see if you can find another leaf nodes within distance
+            queue<TreeNode *> que;
+            unordered_set<TreeNode *> visited;
+            que.push(leaf);
+            visited.insert(leaf);
+
+            for (int level = 0; level <= distance; level++)
+            { // only to till<=distance
+                int size = que.size();
+                while (size--)
+                {
+                    TreeNode *curr = que.front();
+                    que.pop();
+
+                    if (curr != leaf && st.count(curr))
+                    {
+                        count++;
+                    }
+
+                    for (auto &ngbr : adj[curr])
+                    {
+                        if (!visited.count(ngbr))
+                        {
+                            que.push(ngbr);
+                            visited.insert(ngbr);
+                        }
+                    }
+                }
+            }
+        }
+        return count / 2;
+    }
+};
