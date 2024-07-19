@@ -91,3 +91,40 @@ LEETCODE POTD 19/7/2024
 // 1 <= n, m <= 50
 // 1 <= matrix[i][j] <= 105.
 // All elements in the matrix are distinct.
+
+
+
+class Solution {
+public:
+    vector<int> luckyNumbers (vector<vector<int>>& matrix) {
+        int rows=matrix.size();
+        int cols=matrix[0].size();
+        vector<int> rowMins(rows, INT_MAX);
+        vector<int> colMaxs(cols, INT_MIN);
+        for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            rowMins[i] = std::min(rowMins[i], matrix[i][j]);
+        }
+    }
+    
+    // Compute the maximum element in each column
+    for (int j = 0; j < cols; ++j) {
+        for (int i = 0; i < rows; ++i) {
+            colMaxs[j] = std::max(colMaxs[j], matrix[i][j]);
+        }
+    }
+    
+    std::vector<int> luckyNumbers;
+    
+    // Check if any row minimum is also a column maximum
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (matrix[i][j] == rowMins[i] && matrix[i][j] == colMaxs[j]) {
+                luckyNumbers.push_back(matrix[i][j]);
+            }
+        }
+    }
+    
+    return luckyNumbers;
+    }
+};
