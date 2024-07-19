@@ -19,3 +19,36 @@ Count Smaller elements
 // 0 ≤ arr[i]  ≤ 108
 
 
+class Solution {
+  public:
+    vector<int> constructLowerArray(vector<int> &arr) {
+        vector<int> ans;
+        vector<int> temp(arr.begin(),arr.end());
+        sort(temp.begin(),temp.end());
+        int n=arr.size();
+        for(int i=0;i<n;i++){
+            int tar=arr[i];
+            int start=0;
+            int end=temp.size()-1;
+            int ind=-1;
+            while(start<=end){
+                int mid=start+(end-start)/2;
+                if(temp[mid]==tar){
+                    ind=mid;
+                    end=mid-1;
+                }
+                else if(temp[mid]<tar){
+                    start=mid+1;
+                }
+                else{
+                    end=mid-1;
+                }
+            }
+        
+            ans.push_back(ind);
+            temp.erase(temp.begin() + ind);
+        }
+        return ans;
+        
+    }
+};
