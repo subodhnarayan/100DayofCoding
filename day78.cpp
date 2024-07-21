@@ -1,3 +1,4 @@
+//GFG POTD 2024//21
 // Maximum product subset of an array
 // Difficulty: MediumAccuracy: 17.21%Submissions: 68K+Points: 4
 // Given an array arr. The task is to find and return the maximum product possible with the subset of elements present in the array.
