@@ -1,7 +1,7 @@
-//GFG POTD 2024//21
-// Maximum product subset of an array
-// Difficulty: MediumAccuracy: 17.21%Submissions: 68K+Points: 4
-// Given an array arr. The task is to find and return the maximum product possible with the subset of elements present in the array.
+// GFG POTD 2024/07/21
+//  Maximum product subset of an array
+//  Difficulty: MediumAccuracy: 17.21%Submissions: 68K+Points: 4
+//  Given an array arr. The task is to find and return the maximum product possible with the subset of elements present in the array.
 
 // Note:
 
@@ -67,13 +67,14 @@ public:
     }
 };
 
-// 2392. Build a Matrix With Conditions
-// Solved
-// Hard
-// Topics
-// Companies
-// Hint
-// You are given a positive integer k. You are also given:
+// Leetcode POTD 2024/07/21
+//  2392. Build a Matrix With Conditions
+//  Solved
+//  Hard
+//  Topics
+//  Companies
+//  Hint
+//  You are given a positive integer k. You are also given:
 
 // a 2D integer array rowConditions of size n where rowConditions[i] = [abovei, belowi], and
 // a 2D integer array colConditions of size m where colConditions[i] = [lefti, righti].
