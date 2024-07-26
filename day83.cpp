@@ -26,3 +26,27 @@ Constraints:
 0<= k <= 50
 str may contain duplicate characters
 str contains only lowercase alphabets or spaces.
+
+class Solution {
+  public:
+
+    bool kPangram(string str, int k) {
+        // code here
+          string s = "";
+        for(auto i :str)
+        {
+            if(i== ' ')continue;
+            else s+=i;
+        }
+        
+        if(s.length()<26)return 0;
+        set<char>st;
+        for(int i=0;i<s.length();i++)
+        {
+            st.insert(s[i]);
+        }
+        if(st.size()+k >=26 || st.size()>=26)return 1;
+        return 0;
+    
+    }
+};
