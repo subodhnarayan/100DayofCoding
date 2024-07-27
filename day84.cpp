@@ -1,4 +1,4 @@
----------------------------------------------GFg POTD-
+---------------------------------------------GFg-POTD-27/07/2024---------------------------------------------
 Form a palindrome
 Difficulty: MediumAccuracy: 45.4%Submissions: 106K+Points: 4
 Given a string, find the minimum number of characters to be inserted to convert it to a palindrome.
@@ -19,3 +19,22 @@ Constraints:
 str contains only lowercase alphabets.
 
 
+class Solution{
+  public:
+    int countMin(string str){
+     string s = str;
+    reverse(s.begin(),s.end());
+    int n = str.length();
+    vector<vector<int>> dp(n+1, vector<int>(n+1,0));
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            if(str[i-1]==s[j-1]){
+                dp[i][j] = 1 + dp[i-1][j-1];
+            }else{
+                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
+            }
+        }
+    }
+    return n-dp[n][n];
+    }
+};
