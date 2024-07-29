@@ -90,3 +90,21 @@ n == rating.length
 3 <= n <= 1000
 1 <= rating[i] <= 105
 All the integers in rating are unique.
+
+class Solution {
+public:
+    int numTeams(vector<int>& rating) {
+        int n=rating.size();
+        int count=0;
+        for(int i=0;i<n-2;i++){
+            for(int j=i+1;j<n-1;j++){
+                for(int k=j+1;k<n;k++){
+                    if((rating[i]>rating[j] && rating[j] >rating[k]) || (rating[i]<rating[j] && rating[j]<rating[k])){
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+};
