@@ -23,3 +23,28 @@ Constraints:
 1 ≤ number of rows, number of columns ≤ 103
 0 ≤ arr[i][j] ≤ 1 
 
+
+class Solution {
+  public:
+    int rowWithMax1s(vector<vector<int> > &arr) {
+        int row=arr.size();
+        int col=arr[0].size();
+        int index=-1;
+        int ans=0;
+        for(int i=0;i<row;i++){
+             int count=0;
+            for(int j=0;j<col;j++){
+               if(arr[i][j]==1){
+                   count++;
+               }
+            
+            }
+            if(count>ans){
+                ans=count;
+                index=i;
+            }
+        
+        }
+        return index;
+    }
+};
