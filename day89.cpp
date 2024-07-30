@@ -85,3 +85,26 @@ Constraints:
 1 <= s.length <= 105
 s[i] is 'a' or 'b'​​.
 
+
+class Solution {
+public:
+    int minimumDeletions(string s) {
+        int count_b = 0;  // Count of 'b's encountered so far
+    int deletions = 0;  // Minimum deletions needed
+
+    for (char c : s) {
+        if (c == 'b') {
+            // Count the 'b' characters
+            count_b++;
+        } else if (c == 'a') {
+            // For each 'a', if there are any 'b's before it, we need to delete one 'b' to balance the string
+            if (count_b > 0) {
+                deletions++;
+                count_b--;  // We've effectively "deleted" a 'b' by balancing this 'a'
+            }
+        }
+    }
+
+    return deletions;
+    }
+};
