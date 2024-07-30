@@ -25,3 +25,28 @@ Constraints:
 2 ≤ n ≤ 5
 0 ≤ mat[i][j] ≤ 1
 
+
+class Solution {
+  public:
+   void help(vector<vector<int>> &mat,int n,int i,int j,vector<string> &ans,string str){
+       if(i<0 || j<0 || i==n || j==n || mat[i][j]==0 ){
+           return;
+       }
+       if(i==n-1 and j==n-1){
+           ans.push_back(str);
+       }
+       mat[i][j]=0;
+       help(mat,n,i-1,j,ans,str+'U');
+       help(mat,n,i+1,j,ans,str+'D');
+       help(mat,n,i,j+1,ans,str+'R');
+       help(mat,n,i,j-1,ans,str+'L');
+       mat[i][j]=1;
+       
+   }
+    vector<string> findPath(vector<vector<int>> &mat) {
+        vector<string> ans;
+        help(mat,mat.size(),0,0,ans,"");
+        return ans;
+    }
+};
+
