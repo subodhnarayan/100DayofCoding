@@ -19,4 +19,25 @@ Constraints:
 1 ≤ |arr[i]| ≤ 103
 
 
+class Solution {
+  public:
+
+    string longestCommonPrefix(vector<string> arr) {
+          sort(arr.begin(),arr.end(),[&](auto a,auto b){
+            return a.length()<b.length();
+        });
+        int len=arr[0].size();
+        string ans= arr[0];
+        for(int i=1;i<arr.size();i++){
+            for(int j=0;j<len;j++){
+                if(arr[i][j]!=ans[j]){
+                    len=j;
+                }
+            }
+        }
+        return len==0? "-1" :ans.substr(0,len);
+    }
+};
+
+
 
