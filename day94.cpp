@@ -85,3 +85,27 @@ n == nums.length
 1 <= left <= right <= n * (n + 1) / 2
 
 
+class Solution {
+public:
+    int rangeSum(vector<int>& nums, int n, int left, int right) {
+        vector<int> st;
+        int mod=1e9+7;
+        for(int i=0;i<n;i++){
+            int currsum=0;
+            for(int j=i;j<n;j++){
+                currsum=(currsum+nums[j])%mod;
+                st.push_back(currsum);
+            }
+        }
+
+    sort(st.begin(),st.end());
+
+    int sum=0;
+    if(left>0 && right<=st.size()){
+     for(int i=left-1;i<=right-1;i++){
+        sum=(sum+st[i])%mod;
+     }
+    }
+     return sum;
+    }
+};
