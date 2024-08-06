@@ -22,3 +22,31 @@ Expected Auxiliary Space: O(1)
 
 Constraints:
 1<=str.length() <=15
+
+
+#include<string>
+using namespace std;
+class Solution {
+  public:
+    int isValid(string str) {
+         int n=str.size();
+         int num=-1,count=0,index=-1;
+        for(int i=0;i<n;i++){
+            if(str[i]=='.'){
+                count++;
+                if(num<0 || num>255) return false;
+                if(num!=0 and str[index+1]=='0') return false;
+                num=-1;
+                index=i;
+                
+            }
+            else{
+                if(num==-1) num=0;
+               num=num*10+(str[i]-'0');
+            }
+        }
+        if(num<0 || num>255 || count!=3) return false;
+        if(num!=0 and str[index+1]=='0') return false;
+        return true;
+    }
+};
