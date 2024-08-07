@@ -20,5 +20,33 @@ Constraints:
 1 <= arr1.size(), arr2.size() <= 106
 0 <= arr1[i], arr2[i] < 108
 
-
+class Solution {
+  public:
+    int kthElement(int k, vector<int>& arr1, vector<int>& arr2) {
+         int i1=0;
+        int i2=0;
+        while(i1<arr1.size() && i2<arr2.size()){
+            long smaller=arr1[i1]<=arr2[i2]?arr1[i1++]:arr2[i2++];
+            k--;
+            if(k==0){
+                return smaller;
+            }
+        }
+        while (i1 < arr1.size()) {
+            long smaller = arr1[i1++];
+            k--;
+            if (k == 0) {
+                return smaller;
+            }
+        }
+        while (i2 < arr2.size()) {
+            long smaller = arr2[i2++];
+            k--;
+            if (k == 0) {
+                return smaller;
+            }
+        }
+        return -1;
+    }
+};
 
