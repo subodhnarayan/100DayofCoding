@@ -1,3 +1,5 @@
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 6 / 08 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
 K-th element of two Arrays
 Difficulty: MediumAccuracy: 37.4%Submissions: 255K+Points: 4
 Given two sorted arrays arr1 and arr2 and an element k. The task is to find the element that would be at the kth position of the combined sorted array.
@@ -17,4 +19,6 @@ Constraints:
 1 <= k<= arr1.size()+arr2.size()
 1 <= arr1.size(), arr2.size() <= 106
 0 <= arr1[i], arr2[i] < 108
+
+
 
