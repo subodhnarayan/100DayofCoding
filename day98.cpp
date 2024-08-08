@@ -29,3 +29,31 @@ Constraints:
 2 ≤ number of nodes ≤ 105
 1 ≤ node value ≤ 105
 
+
+
+class Solution {
+  public:
+  int solve(Node* root,bool &ans){
+      if(root==NULL){
+          return 0;
+      }
+      if(root->left==NULL && root->right==NULL)
+      {
+          return root->data;
+      }
+      
+      int leftval=solve(root->left,ans);
+      int rightval=solve(root->right,ans);
+      
+      if(leftval+rightval!=root->data){
+          ans=false;
+      }
+      
+      return leftval+rightval+root->data;
+  }
+    bool isSumTree(Node* root) {
+        bool ans=true;
+        solve(root,ans);
+        return ans;
+    }
+};
