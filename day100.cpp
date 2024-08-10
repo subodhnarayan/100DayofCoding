@@ -24,3 +24,24 @@ Constraints:
 1 <= node -> data <= 104
 1 <= k <= number of nodes 
 
+class Solution {
+  public:
+    // Function to rotate a linked list.
+    Node* rotate(Node* head, int k) {
+        Node* ptr=head;
+       
+        while(ptr->next!=NULL)
+        {
+            ptr=ptr->next;
+        }
+        while(k>0){
+            Node* temp=head->next;
+            head->next=NULL;
+            ptr->next=head;
+            ptr=head; //head become the last element
+            head=temp;
+            k--;
+        }
+        return head;
+    }
+};
