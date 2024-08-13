@@ -27,3 +27,73 @@ class Solution {
         return fs;
     }
 };
+
+
+
+
+
+
+
+40. Combination Sum II
+Solved
+Medium
+Topics
+Companies
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
+
+Each number in candidates may only be used once in the combination.
+
+Note: The solution set must not contain duplicate combinations.
+
+ 
+
+Example 1:
+
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: 
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]
+Example 2:
+
+Input: candidates = [2,5,2,1,2], target = 5
+Output: 
+[
+[1,2,2],
+[5]
+]
+ 
+
+Constraints:
+
+1 <= candidates.length <= 100
+1 <= candidates[i] <= 50
+1 <= target <= 30
+
+
+class Solution {
+public:
+   void findcombination(int ind,int target,vector<int> &cand,vector<int> &ds,vector<vector<int>> &ans){
+     if(target==0){
+        ans.push_back(ds);
+        return;
+    }
+    for(int i=ind;i<cand.size();i++){
+        if(i>ind && cand[i]==cand[i-1]) continue;
+        if(cand[i]>target) break;
+        ds.push_back(cand[i]);
+        findcombination(i+1,target-cand[i],cand,ds,ans);
+        ds.pop_back();
+    }
+   }
+    vector<vector<int>> combinationSum2(vector<int>& cand, int target) {
+        vector<vector<int>> ans;
+        sort(cand.begin(),cand.end());
+        vector<int> ds;
+        findcombination(0,target,cand,ds,ans);
+        return ans;
+    }
+};
