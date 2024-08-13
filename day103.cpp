@@ -20,3 +20,10 @@ Expected Auxiliary Space: O(1)
 Constraints:
 1 ≤ n ≤ 107
 
+class Solution {
+  public:
+    long long int floorSqrt(long long int n) {
+           long long int fs=floor(sqrt(n));
+        return fs;
+    }
+};
