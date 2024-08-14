@@ -84,3 +84,45 @@ n == nums.length
 1 <= k <= n * (n - 1) / 2
 
 
+class Solution {
+public:
+    int smallestDistancePair(vector<int>& nums, int k) {
+        // vector<int> ans;
+        // sort(nums.begin(),nums.end());
+        // int n=nums.size();
+        // int count=0;
+        // for(int i=0;i<n-1;i++){
+        //    for(int j=i+1;j<n;j++){
+        //     ans.push_back(abs(nums[i]-nums[j]));
+        //    }
+        // }
+        // sort(ans.begin(),ans.end());
+        // return ans[k-1];
+
+        sort(nums.begin(), nums.end());
+    int n = nums.size();
+    int low = 0, high = nums[n - 1] - nums[0];
+
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+        int count = 0, j = 0;
+
+        // Count pairs with distance <= mid
+        for (int i = 0; i < n; ++i) {
+            while (j < n && nums[j] - nums[i] <= mid) {
+                j++;
+            }
+            count += j - i - 1;
+        }
+
+        // Adjust the search range
+        if (count >= k) {
+            high = mid;
+        } else {
+            low = mid + 1;
+        }
+    }
+
+    return low;
+    }
+};
