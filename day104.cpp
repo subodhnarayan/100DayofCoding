@@ -1,3 +1,5 @@
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 14 / 08 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
 Longest Common Substring
 Difficulty: MediumAccuracy: 42.69%Submissions: 232K+Points: 4
 You are given two strings str1 and str2. Your task is to find the length of the longest common substring among the given strings.
@@ -16,3 +18,4 @@ Expected Auxiliary Space: O(n*m).
 Constraints:
 1<= str1.size(), str2.size()<=1000
 Both strings may contain upper and lower case alphabets.
+
