@@ -22,3 +22,56 @@ Expected Auxiliary Space: O(1)
 Constraints:
 1 <= len(list) <= 105
 0 <= list[i] <= 9
+
+class Solution {
+  public:  Node* reverse(Node* head){
+        Node* curr = head;
+        Node* prev = NULL;
+        Node* nex = NULL;
+        while(curr != NULL){
+            nex = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nex;
+        }
+        return prev;
+    }
+    
+    void addone(Node* head1){
+        
+        Node* head = head1;
+        Node* prev = head;
+        while(head != NULL && head->data == 9 ){
+            head->data = 0;
+            prev= head;
+            head = head->next;
+            
+        }
+
+        if(prev -> next == NULL && prev->data == 0){
+            Node* node = new Node(1);
+            prev->next = node;
+        }
+        else{
+            head->data += 1;
+        }
+        
+    }
+    
+    Node* addOne(Node* head) {
+          if(head == NULL){
+            return head;
+        }
+        head = reverse(head);
+        int last = head->data;
+        
+        if(last < 9){
+            head->data += 1;
+            return reverse(head);
+        }
+        else{
+            addone(head);
+        }
+        
+        return reverse(head);;
+    }
