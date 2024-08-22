@@ -92,3 +92,21 @@ Explanation: The binary representation of 1 is 1 (no leading zero bits), and its
 Constraints:
 
 1 <= num < 231
+
+
+
+class Solution {
+public:
+    int findComplement(int num) {
+        // if(num==0) return 1;
+        // int len=(int)(log2(num))+1;
+        // int mask=(1<<len)-1;
+        // return mask^num;
+         if (num==1) return 0;
+        int ans=0;
+        for(int b=0; num; b++, num>>=1){// num/=2
+            ans+=(1-(num&1))<<b;// (num%2==0?1:0)*(1<<b)
+        }
+        return ans;
+    }
+};
