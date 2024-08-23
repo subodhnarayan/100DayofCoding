@@ -31,3 +31,21 @@ Constraints:
 0 <= Number of nodes <= 105
 0 <= Data of a node <= 105
 
+void solve(Node *root,vector<int> &ans,int level,unordered_map<int,int> &mp){
+    if(root==NULL) return;
+    if(!mp[level]){
+        ans.push_back(root->data);
+        mp[level]=1;
+    }
+    level++;
+    solve(root->left,ans,level,mp);
+    solve(root->right,ans,level,mp);
+}
+
+vector<int> leftView(Node *root)
+{
+   vector<int> ans;
+   unordered_map<int,int> mp;
+   solve(root,ans,0,mp);
+   return ans;
+}
