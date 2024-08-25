@@ -85,7 +85,7 @@ class Solution {
 };
 
 
-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 25 / 08 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -Leetcode - POTD - 25 / 08 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 145. Binary Tree Postorder Traversal
 Solved
@@ -119,3 +119,19 @@ The number of the nodes in the tree is in the range [0, 100].
 
 Follow up: Recursive solution is trivial, could you do it iteratively?
 
+class Solution {
+public:
+    void postorder(vector<int> &ans,TreeNode* root){
+        if(root==NULL){
+            return;
+        }
+        postorder(ans,root->left);
+        postorder(ans,root->right);
+        ans.push_back(root->val);
+    }
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        postorder(ans,root);
+        return ans;
+    }
+};
