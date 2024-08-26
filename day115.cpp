@@ -26,3 +26,29 @@ Expected Auxiliary Space: O(n*m)
 Constraints:
 1 <= length of(str, pattern) <= 200
 
+
+class Solution {
+  public:
+    /*You are required to complete this method*/
+    int solve(string pat,string str,int i,int j,vector<vector<int>> &dp){
+        if(i==pat.length() and j==str.length()) return 1;
+        if(i==pat.length()) return 0;
+        if(j==str.length() and pat[i]=='*') return solve(pat,str,i+1,j,dp);
+        if(j==str.length()) return 0;
+        if(pat[i]!='*' and pat[i]!='?' and pat[i]!=str[j]) return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
+        int a=0,b=0,c=0;
+        if(pat[i]=='*'){
+            a=solve(pat,str,i+1,j,dp);
+            b=solve(pat,str,i,j+1,dp);
+        }
+        c=solve(pat,str,i+1,j+1,dp);
+        return dp[i][j]=a|b|c;
+    }
+    int wildCard(string pat, string str) {
+        vector<vector<int>> dp(pat.length(),vector<int>(str.length(),-1)); 
+       return solve(pat,str,0,0,dp);
+    }
+};
+
+
