@@ -17,3 +17,58 @@ Expected Space Complexity: O(n)
 Constraints:
 1 <= arr.size() <= 106
 1<= arr[i] <=109
+
+
+
+class Solution {
+  public:
+    /*You are required to complete this method */
+    int findMaxDiff(vector<int> &arr) {
+        int n=arr.size();
+        vector<int> ls(n,0);
+        vector<int> rs(n,0);
+        
+    stack<int> S;
+ 
+    // Traverse all array elements
+    for (int i=0; i<n; i++)
+    {
+        // Keep removing top element from S while the top
+        // element is greater than or equal to arr[i]
+        while (!S.empty() && S.top() >= arr[i])
+            S.pop();
+ 
+        // If all elements in S were greater than arr[i]
+        if (!S.empty()){
+            ls[i]=S.top();
+        }
+            
+ 
+        // Push this element
+        S.push(arr[i]);
+    }
+    stack<int> St;
+    for(int i=n-1; i>=0; i--)
+    {
+        // Keep removing top element from S while the top
+        // element is greater than or equal to arr[i]
+        while (!St.empty() && St.top() >= arr[i])
+            St.pop();
+ 
+        // If all elements in S were greater than arr[i]
+        if (!St.empty()){
+            rs[i]=St.top();
+        }
+ 
+        // Push this element
+        St.push(arr[i]);
+    }
+    
+    int ans=INT_MIN;
+    for(int i=0;i<n;i++){
+        ans=max(abs(ls[i]-rs[i]),ans);
+    }
+    return ans;
+    
+    }
+};
