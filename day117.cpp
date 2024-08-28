@@ -1,5 +1,5 @@
 
-
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 27 / 08 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 Sorting Elements of an Array by Frequency
 Difficulty: MediumAccuracy: 44.93%Submissions: 74K+Points: 4
@@ -19,3 +19,26 @@ Expected Space Complexity: O(n)
 Constraints:
 1 ≤ arr.size() ≤ 105
 1 ≤ arr[i]≤ 105
+
+
+class Solution {
+  public:
+    // Complete this function
+    // Function to sort the array according to frequency of elements.
+    vector<int> sortByFreq(vector<int>& arr) {
+        unordered_map<int,int> m;
+        int n=arr.size();
+        for(int num:arr){
+           m[num]++;
+           }
+        
+       sort(arr.begin(),arr.end(), [&](int a , int b){
+            if(m[a]==m[b]){
+                return a<b;
+            }
+            return m[a]>m[b];
+        });
+        return arr;
+        
+    }
+};
