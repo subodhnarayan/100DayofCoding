@@ -24,3 +24,32 @@ Constraints:
 1 <= arr.size() <= 105
 1 <= arr[i] <= 106
 
+
+
+class Solution {
+  public:
+    vector<int> find3Numbers(vector<int> &arr) {
+        int n=arr.size();
+        vector<int> leftsmall(n);
+        vector<int> rightlar(n);
+        
+        leftsmall[0]=arr[0];
+        
+        for(int i=1;i<n;i++){
+            leftsmall[i]=min(arr[i],leftsmall[i-1]);
+        }
+        
+        rightlar[n-1]=arr[n-1];
+        for(int i=n-2;i>=0;i--){
+            rightlar[i]=max(rightlar[i+1],arr[i]);
+        }
+        
+        for(int i=1;i<=n-2;i++){
+            if(leftsmall[i-1]<arr[i] and arr[i]<rightlar[i+1]){
+                return {leftsmall[i-1],arr[i],rightlar[i+1]};
+            }
+        }
+       return {};
+        
+    }
+};
