@@ -144,3 +144,26 @@ chalk.length == n
 1 <= k <= 109
 
 
+class Solution {
+public:
+    int chalkReplacer(vector<int>& chalk, int k) {
+        int sum=0;
+        int n=chalk.size();
+        for(int i=0;i<n;i++){
+            sum+=chalk[i];
+            if(sum>k){
+                break;
+            }
+        }
+        if(sum!=0){
+            int rem=k%sum;
+            for(int i=0;i<n;i++){
+                if(rem<chalk[i]){
+                    return i;
+                }
+                rem=rem-chalk[i];
+            }
+        }
+        return 0;
+    }
+};
