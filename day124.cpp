@@ -18,3 +18,9 @@ Expected Space Complexity: O(n)
 Constraints:
 1 ≤ n ≤ 104
 
+class Solution{
+	public:
+		int nthStair(int n){
+		    return n/2 + 1;
+		}
+};
