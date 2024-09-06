@@ -100,3 +100,30 @@ The number of nodes in the given list is in the range [1, 105].
 The input is generated such that there is at least one node in the linked list that has a value not present in nums.
 
 
+class Solution {
+public:
+    ListNode* modifiedList(vector<int>& nums, ListNode* head) {
+        ListNode* temp=head;
+        unordered_set<int> st(nums.begin(),nums.end());
+            while(head && st.count(head->val)){
+                head=head->next;
+            }
+        
+            ListNode* prev=NULL;
+            ListNode* curr=head;
+            while(curr){   
+               if (st.count(curr->val)) {
+                // If current node needs to be removed
+                if (prev) {
+                    prev->next = curr->next; // Bypass the current node
+                }
+                curr = curr->next; // Move to the next node
+            }
+               else{
+                    prev=curr;
+                    curr=curr->next;
+               }
+            }
+        return head;
+    }
+};
