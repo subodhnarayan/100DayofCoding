@@ -21,3 +21,20 @@ Constraints:
 1 ≤ arr.size() ≤ 105
 -107 ≤ arr[i] ≤ 107
 
+class Solution {
+  public:
+    // Function to find the sum of contiguous subarray with maximum sum.
+    int maxSubarraySum(vector<int> &arr) {
+         int max_end_here=0,max_so_far=INT_MIN;
+        int n=arr.size();
+        for(int i=0;i<n;i++){
+            max_end_here+=arr[i];
+            
+            max_so_far=max(max_end_here,max_so_far);
+            
+            
+            max_end_here=max(max_end_here,0);
+        }
+        return max_so_far;
+    }
+};
