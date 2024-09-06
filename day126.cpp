@@ -40,7 +40,7 @@ class Solution {
 };
 
 
-- -- -- -- -- -- -- -- -- -- -- -- -- -- -Leetcode - POTD - 5 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+- -- -- -- -- -- -- -- -- -- -- -- -- -- -Leetcode - POTD - 6 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 3217. Delete Nodes From Linked List Present in Array
 Solved
