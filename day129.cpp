@@ -86,4 +86,39 @@ Constraints:
 The number of nodes in the list is in the range [1, m * n].
 0 <= Node.val <= 1000
 
-
+class Solution {
+public:
+    vector<vector<int>> spiralMatrix(int m, int n, ListNode* head) {
+        int left=0,right=n-1;
+        int top=0,down=m-1;
+        ListNode* curr=head;
+        vector<vector<int>> arr(m,vector<int> (n,-1));
+        while(left<=right && top<=down && curr!=NULL){
+            for(int i=left;i<=right && curr != NULL;i++){
+                arr[top][i]=curr->val;
+                 curr=curr->next;
+            }
+            top++;
+            for(int i=top;i<=down && curr != NULL;i++){
+                arr[i][right]=curr->val;
+                 curr=curr->next;
+                }  
+            right--;
+            if(top<=down){
+            for(int i=right;i>=left && curr != NULL;i--){
+                arr[down][i]=curr->val;
+                 curr=curr->next;
+            }
+            down--;
+            }
+            if(left<=right){
+            for(int i=down;i>=top && curr != NULL;i--){
+                arr[i][left]=curr->val;
+                 curr=curr->next;
+            }
+            left++;
+            }
+        }
+        return arr;
+    }
+};
