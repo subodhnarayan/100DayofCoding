@@ -141,3 +141,27 @@ Constraints:
 
 The number of nodes in the list is in the range [1, 5000].
 1 <= Node.val <= 1000
+
+
+
+class Solution {
+public:
+
+
+    ListNode* insertGreatestCommonDivisors(ListNode* head) {
+        ListNode* curr=head;
+
+        ListNode* fir=curr;
+        ListNode* sec=fir->next;
+
+        while(sec!=NULL){
+            int gcd=abs(__gcd(fir->val,sec->val));
+            ListNode *ne=new ListNode(gcd);
+            fir->next=ne;
+            ne->next=sec;
+            fir=sec;
+            sec=sec->next;
+        }
+        return head;
+    }
+};
