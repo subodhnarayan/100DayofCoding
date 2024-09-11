@@ -1,4 +1,4 @@
-
+- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 10 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 Minimum Cost of ropes
 Difficulty: EasyAccuracy: 42.73%Submissions: 218K+Points: 2
 Given an array arr containing the lengths of the different ropes, we need to connect these ropes to form one rope. The cost to connect two ropes is equal to sum of their lengths. The task is to connect the ropes with minimum cost.  
@@ -25,3 +25,33 @@ Expected Auxilliary Space: O(n)
 Constraints:
 1 ≤ arr.size() ≤ 205
 1 ≤ arr[i] ≤ 106
+
+
+class Solution {
+  public:
+    // Function to return the minimum cost of connecting the ropes.
+    long long minCost(vector<long long>& arr) {
+        // Your code here
+        long long ans=0;
+        priority_queue<long long, vector<long long>, greater<long long>> pq;
+        
+        for(auto x:arr){
+            pq.push(x);
+        }
+        
+        while(pq.size()!=1){
+            long long first=pq.top();
+            pq.pop();
+            long long second=pq.top();
+             pq.pop();
+            long long total=first+second;
+            pq.push(total);
+            ans+=total;
+        }
+        
+        return ans;
+            
+        }
+        
+        
+};
