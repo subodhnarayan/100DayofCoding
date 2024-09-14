@@ -118,3 +118,23 @@ Constraints:
 1 <= nums.length <= 105
 1 <= nums[i] <= 106
 
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums) {
+        int max_num=*max_element(nums.begin(),nums.end());
+        int max_prod=0;
+        int len=0;
+        int ans=0;
+        for(int num:nums){
+            if(num==max_num){
+                len++;
+              ans=max(ans,len);
+            }
+            else{
+                len=0;
+            }
+        }
+
+        return ans;
+    }
+};
