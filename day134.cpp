@@ -25,3 +25,52 @@ Expected Auxiliary Space: O(n)
 Constraints:
 1 ≤ arr.size() ≤ 107
 -106 ≤ arr[i] ≤ 107
+
+
+
+class Solution {
+  public:
+
+    void rearrange(vector<int> &arr) {
+        int n=arr.size();
+        vector<int> ps;
+        vector<int> ng;
+        for(int i=0;i<n;i++){
+            if(arr[i]>=0){
+                ps.push_back(arr[i]);
+            }
+            else{
+                ng.push_back(arr[i]);
+            }
+        }
+        
+        int i=0;
+        int j=0;
+        int k=0;
+        while(i<ps.size() && j<ng.size()){
+               arr[k]=ps[i];
+               i++;
+               k++;
+               arr[k]=ng[j];
+               j++;
+               k++;
+           }
+           
+        
+        
+        while(i<ps.size()){
+            arr[k]=ps[i];
+            i++,k++;
+        }
+        
+        while(j<ng.size()){
+            arr[k]=ng[j];
+            j++,k++;
+        }
+        
+        
+        
+        
+    
+    }
+};
