@@ -103,3 +103,84 @@ s contains only lowercase English letters.
 
 
 
+
+
+class Solution {
+public:
+    // bool checkevenvowel(string str){
+    //     int ac=0,ec=0,ic=0,oc=0,uc=0;
+    //     for(int i=0;i<str.size();i++){
+    //         if(str[i]=='a'){
+    //             ac++;
+    //         }
+    //         else if(str[i]=='e'){
+    //             ec++;
+    //         }
+    //         else if(str[i]=='i'){
+    //             ic++;
+    //         }
+    //         else if(str[i]=='o'){
+    //             oc++;
+    //         }
+    //         else if(str[i]=='u'){
+    //             uc++;
+    //         }
+    //     }
+        
+    //     if(ac%2!=0){
+    //         return false;
+    //     }
+    //     if(ec%2!=0){
+    //         return false;
+    //     }
+    //     if(ic%2!=0){
+    //         return false;
+    //     }
+    //     if(o%2!=0){
+    //         return false;
+    //     }
+    //     if(u%2!=0){
+    //         return false;
+    //     }
+    //     return true;
+
+    // }
+        return ans;
+      vector<int> mapy(32, -2);
+        mapy[0] = -1;
+
+        int maxLen = 0;
+        int mask = 0;
+
+        for (int i = 0; i < s.size(); ++i) {
+            char ch = s[i];
+
+            switch (ch) {
+                case 'a':
+                    mask ^= 1;
+                    break;
+                case 'e':
+                    mask ^= 2;
+                    break;
+                case 'i':
+                    mask ^= 4;
+                    break;
+                case 'o':
+                    mask ^= 8;
+                    break;
+                case 'u':
+                    mask ^= 16;
+                    break;
+            }
+
+            int prev = mapy[mask];
+            if (prev == -2) {
+                mapy[mask] = i;
+            } else {
+                maxLen = max(maxLen, i - prev);
+            }
+        }
+
+        return maxLen;
+    }
+};
