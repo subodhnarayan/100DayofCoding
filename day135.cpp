@@ -1,4 +1,4 @@
-
+- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 15 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 Binary Tree to DLL
 Difficulty: HardAccuracy: 53.36%Submissions: 152K+Points: 8
@@ -36,3 +36,29 @@ Expected Space Complexity: O(height of the tree)
 Constraints:
 1 ≤ Number of nodes ≤ 105
 0 ≤ Data of a node ≤ 105
+
+
+class Solution {
+  public:
+    void inorder(Node* root,vector<int> &ans){
+        if(root==NULL) return;
+        inorder(root->left,ans);
+        ans.push_back(root->data);
+        inorder(root->right,ans);
+        
+    }
+    Node* bToDLL(Node* root) {
+       vector<int> ans;
+       inorder(root,ans);
+       Node* head=new Node(ans[0]);
+       Node* curr=head;
+       int n=ans.size();
+       for(int i=1;i<n;i++){
+          Node* newnode=new Node(ans[i]);
+          curr->right=newnode;
+          newnode->left=curr;
+          curr=newnode;
+       }
+       return head;
+    }
+};
