@@ -109,3 +109,66 @@ Constraints:
 timePoints[i] is in the format "HH:MM".
 
 
+class Solution {
+public:
+    int dist(string a,string b){
+        // int h1=stoi(a.substr(0,2));
+        // int m1=stoi(a.substr(3,5));
+        // int h2=stoi(b.substr(0,2));
+        // int m2=stoi(a.substr(3,5));
+
+        // if(h2<h1){
+        //     m2=60+m2;
+        // }
+
+        // if(h2>h1 and m2<m1){
+        //     m2=60+m2;
+        // }
+        // return m2-m1;
+
+        int h1 = stoi(a.substr(0, 2));
+        int m1 = stoi(a.substr(3, 2));
+        int h2 = stoi(b.substr(0, 2));
+        int m2 = stoi(b.substr(3, 2));
+
+        int t1 = h1 * 60 + m1;  // total minutes for time a
+        int t2 = h2 * 60 + m2;  // total minutes for time b
+
+        // Calculate the difference in minutes
+        int diff = abs(t1 - t2);
+        // Consider the circular nature of time (1440 minutes in a day)
+        return min(diff, 1440 - diff);
+
+    }
+    int findMinDifference(vector<string>& timePoints) {
+        // int ans=INT_MAX;
+        // int n=time.size();
+        // for(int i=0;i<n-1;i++){
+        //   for(int j=i+1;j<n;j++){
+        //     string a=time[i];
+        //     string b=time[j];
+        //     ans=min(ans,dist(a,b));
+        //   }
+        // }
+        // return ans;
+
+           int n = timePoints.size();
+        if (n > 1440) return 0; // There are only 1440 minutes in a day, so duplicate times must give 0 difference
+
+        // Sort the time points to make comparison easier
+        sort(timePoints.begin(), timePoints.end());
+
+        // Initialize the minimum difference as the max possible (1440 minutes)
+        int ans = INT_MAX;
+
+        // Compare adjacent times
+        for (int i = 1; i < n; i++) {
+            ans = min(ans, dist(timePoints[i], timePoints[i - 1]));
+        }
+
+        // Don't forget to compare the first and last time (because of circular nature of time)
+        ans = min(ans, dist(timePoints[0], timePoints[n - 1]));
+
+        return ans;
+    }
+};
