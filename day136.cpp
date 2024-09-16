@@ -1,4 +1,4 @@
-- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 15 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 16 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 Longest valid Parentheses
 Difficulty: HardAccuracy: 26.13%Submissions: 123K+Points: 8
 Given a string str consisting of opening and closing parenthesis '(' and ')'. Find length of the longest valid parenthesis substring.
@@ -80,3 +80,8 @@ class Solution {
         return max(max1,max2);
     }
 };
+
+
+
+ -- -- -- -- -- -- -- -- -- -- -- -- -- -Leetcode - POTD - 16 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+ 
