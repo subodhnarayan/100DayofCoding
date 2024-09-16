@@ -21,3 +21,62 @@ Expected Auxiliary Space: O(|str|)
 Constraints:
 1 ≤ |str| ≤ 105  
 
+class Solution {
+  public:
+    int maxLength(string& str) {
+        // stack<char> st;
+        // int count=0;
+        // for(int i=0;i<str.size();i++){
+        //     if(st.empty()){
+        //         st.push(str[i]);
+        //     }
+        //     else if(str[i]==')'){
+        //         if(st.top()=='('){
+        //             count+=2;
+        //             st.pop();
+        //         }
+        //         else{
+        //             st.push(str[i]);
+        //         }
+        //     }
+        //     else{
+        //         st.push(str[i]);
+        //     }
+        // }
+        // return count;
+        
+        int max1=0,max2=0,op=0,cl=0;
+        for(int i=0;i<str.size();i++){
+            if(str[i]=='('){
+                op++;
+            }
+            else{
+                cl++;
+            }
+            if(op<cl){
+                op=cl=0;
+            }
+            if(op==cl){
+                max1=max(max1,2*op);
+            }
+        }
+        op=cl=0;
+        
+        for(int i=str.size()-1;i>=0;i--){
+            if(str[i]=='('){
+                op++;
+            }
+            else{
+                cl++;
+            }
+            if(op>cl){
+                op=cl=0;
+            }
+            if(op==cl){
+                max2=max(max2,2*op);
+            }
+            
+        }
+        return max(max1,max2);
+    }
+};
