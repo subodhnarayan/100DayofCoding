@@ -21,3 +21,26 @@ Constraints:
 1 <= |str| <= 105
 
 
+
+
+class Solution {
+  public:
+    // Function to reverse words in a given string.
+    string reverseWords(string S) {
+       string ans;
+        int n=S.size();
+        string str="";
+        for(int i=0;i<n;i++){
+            if(S[i]!='.'){
+                str=str+S[i];
+            }
+            else{
+                ans=str+"."+ans;
+                str="";
+            }
+        }
+        ans=str+"."+ans;
+        ans.pop_back();
+        return ans;
+    }
+};
