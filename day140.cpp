@@ -21,3 +21,21 @@ Expected Auxiliary Space: O(1)
 Constraints:
 1 ≤ height.size() ≤ 106
 1 ≤ heighti ≤ 108
+
+
+class Solution {
+  public:
+    // Returns count buildings that can see sunlight
+    int countBuildings(vector<int> &height) {
+       int ans=1;
+       int max=height[0];
+       for(int i=1;i<height.size();i++){
+           
+           if(height[i]>height[i-1] && height[i]>max){
+               max=height[i];
+               ans++;
+           }
+       }
+       return ans;
+    }
+};
