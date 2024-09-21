@@ -97,3 +97,43 @@ Output: [1,2]
 Constraints:
 
 1 <= n <= 5 * 104
+
+
+
+class Solution {
+public:
+    vector<int> lexicalOrder(int n) {
+       //what is my approach is that first store all this number
+       //range in the string array and then sort that string 
+       //array and then return these each string by converting
+       // number
+
+
+//        vector<string> an;
+//        for(int i=1;i<=n;i++){
+//         an.push_back(to_string(i));
+//        }
+//        sort(an.begin(),an.end());
+//        vector<int> ans;
+//        for(int i=0;i<n;i++){
+// ans.push_back(stoi(an[i]));
+//        }
+//        return ans;  0(nlogn)
+
+       vector<int> ans;
+       int curr=1;
+       for(int i=1;i<=n;i++){
+        ans.push_back(curr);
+        if(curr*10<=n){
+            curr=curr*10;
+        }
+        else{
+            while(curr%10==9 || curr>=n){
+                curr=curr/10;
+            }
+            curr+=1;
+        }
+       }
+       return ans;
+    }
+};
