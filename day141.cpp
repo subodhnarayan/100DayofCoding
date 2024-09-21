@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 20 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 21 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 Clone a linked list with next and random pointer
 Difficulty: HardAccuracy: 64.8%Submissions: 87K+Points: 8
 You are given a special linked list where each node has a next pointer pointing to its next node. You are also given some random pointers, where you will be given some pairs denoting two nodes a and b i.e. a->random = b (random is a pointer to a random node).
@@ -71,7 +71,7 @@ class Solution {
 };
 
 
-
+-- -- -- -- -- -- -- -- -- -- -- -- -- -Leetcode - POTD - 21 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 386. Lexicographical Numbers
 Solved
