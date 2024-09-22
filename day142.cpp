@@ -1,4 +1,4 @@
-
+-- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 22 / 09 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 Longest Prefix Suffix
 Difficulty: HardAccuracy: 27.91%Submissions: 129K+Points: 8
 Given a string of characters, find the length of the longest proper prefix which is also a proper suffix.
