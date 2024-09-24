@@ -22,3 +22,48 @@ Expected Auxiliary Space: O(n), n = len(p)
 
 Constraints: 
 1 ≤ |s|, |p| ≤ 105
+
+class Solution
+{
+    public:
+    //Function to find the smallest window in the string s consisting
+    //of all the characters of string p.
+    string smallestWindow (string s, string p)
+    {
+       vector<int> mpp(26,0);
+        for(char ch: p){
+            mpp[ch-'a']++;
+        }
+        
+        int req=p.length();
+        int i=0;
+        int j=0;
+        int n=s.length();
+        
+        if(req > n) return "-1";
+        
+        int minSize=INT_MAX;
+        int sp=0;
+        while(j<n){
+            if(mpp[s[j]-'a']>0) req--;
+            mpp[s[j]-'a']--; // -ve -> extra hai
+            
+            while(req==0){ // possible ans & window shrink -> i++
+                int currSize = j-i+1;
+                if(currSize<minSize){ // possible ans ki window/substring
+                    minSize = currSize;
+                    sp=i;
+                }
+                
+                mpp[s[i]-'a']++;
+                if(mpp[s[i]-'a']>0){
+                    req++;
+                }
+                i++;
+            }
+            j++;
+        }
+        
+        return minSize==INT_MAX ? "-1" : s.substr(sp,minSize);
+    }
+};
