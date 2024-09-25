@@ -21,3 +21,40 @@ Note: You should not use the recursive stack space as well
 Constraints:
 1 <= number of nodes <= 105
 1 ≤ node->data ≤ 103
+
+
+class Solution {
+  public:
+    // Function to check whether the list is palindrome.
+    bool isPalindrome(Node *head) {
+        // vector<int> ans;
+        // Node* curr=head;
+        // while(curr!=NULL){
+        //     ans.push_back(curr->data);
+        //     curr=curr->next;
+        // }
+        
+        // int n=ans.size()-1,i=0;
+        // while(i<n){
+        //     if(ans[i]!=ans[n]) return false;
+        //     i++,n--;
+        // }
+        // return true;
+        
+        string ans="";
+        Node* curr=head;
+        while(curr!=NULL){
+            ans.push_back(curr->data);
+            curr=curr->next;
+        }
+        
+        int n=ans.size()-1,i=0;
+        while(i<n){
+            if(ans[i]!=ans[n]) return false;
+            i++,n--;
+        }
+        return true;
+        
+        
+    }
+};
