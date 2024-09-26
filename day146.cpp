@@ -16,3 +16,26 @@ Expected Auxiliary Space: O(1)
 Constraints:
 1 <= arr.size() <= 106
 1 <= arr[i] <= 105
+
+
+class Solution {
+  public:
+    // Function to find maximum number of consecutive steps
+    // to gain an increase in altitude with each step.
+    int maxStep(vector<int>& arr) {
+      int n=arr.size();
+      int count=0;
+      int ans=0;
+      for(int i=1;i<n;i++){
+          if(arr[i]>arr[i-1]){
+              count++;
+          }
+          else{
+              ans=max(ans,count);
+              count=0;
+          }
+      }
+      ans=max(ans,count);
+      return ans;
+    }
+};
