@@ -35,3 +35,52 @@ Constraints:
 1 ≤ k ≤ sizeof(arr)
 0 ≤ arr[i] ≤ 109
 
+
+//{ Driver Code Starts
+// Initial Template for C++
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+// User function template for C++
+
+class Solution {
+  public:
+    // Function to find maximum of each subarray of size k.
+    vector<int> max_of_subarrays(int k, vector<int> &arr) {
+    //   vector<int> ans;
+    //   int n=arr.size();
+    //   for(int i=0;i<n-k+1;i++){
+    //       int cn=0;
+    //       for(int j=i;j<i+k;j++){
+    //           cn=max(arr[j],cn);
+    //       }
+    //       ans.push_back(cn);
+    //   }
+    //   return ans;
+    
+    
+      int n = arr.size();
+        int i = 0, j = 1, maxi = 0;
+        vector<int> ans;
+        
+        while(i < k) {
+            if(arr[i] > maxi) maxi = arr[i];
+            i++;
+        }
+        ans.push_back(maxi);
+        
+        while(i < n) {
+            if(arr[j-1]==maxi)
+                maxi = *max_element(arr.begin()+j,arr.begin()+i+1);
+            else if(arr[i]>maxi) 
+                maxi = arr[i];
+            ans.push_back(maxi);
+            i++; j++;
+        }
+        
+        return ans;
+    
+    }
+};
