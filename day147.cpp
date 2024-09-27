@@ -129,3 +129,29 @@ Constraints:
 
 0 <= start < end <= 109
 At most 1000 calls will be made to book.
+
+
+
+class MyCalendarTwo {
+public:
+    map<int, int> eventCount;
+    MyCalendarTwo() {
+        
+    }
+    
+    bool book(int start, int end) {
+        eventCount[start]++;
+        eventCount[end]--;
+
+        int ongoingEvents = 0;
+        for (auto &[time, change] : eventCount) {
+            ongoingEvents += change;
+            if (ongoingEvents >= 3) {
+                eventCount[start]--;
+                eventCount[end]++;
+                return false;
+            }
+        }
+        return true;
+    }
+};
