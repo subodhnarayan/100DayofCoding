@@ -19,3 +19,36 @@ Constraint:
 1 <= k <= 100
 1 <= arr[i] <= 104
 
+class Solution {
+  public:
+    int minimizeCost(int k, vector<int>& arr) {
+        // int n=arr.size();
+        // int ans=0;
+        // for(int i=0;i<n-k;i++){
+        //     int ind=i+1;
+        //     int min=abs(arr[i+1]-arr[i]);
+        //     for(int j=i+2;j<=k+i;j++){
+        //         if(abs(arr[j]-arr[i])<=min){
+        //             ind=j;
+        //             min=abs(arr[j]-arr[i]);
+        //         }
+        //     }
+        //     ans+=min;
+        //     i=ind;
+        //     
+         int n = arr.size();
+        vector<int> dp(n, INT_MAX); // dp[i] stores the minimum cost to reach stone i
+        dp[0] = 0; // No cost to stay on the first stone
+        
+        // Iterate over each stone from the second to the last
+        for (int i = 1; i < n; i++) {
+            // Check all stones j that can jump to i, where j is within k steps
+            for (int j = max(0, i - k); j < i; j++) {
+                dp[i] = min(dp[i], dp[j] + abs(arr[i] - arr[j]));
+            }
+        }
+        
+        return dp[n - 1];
+      
+    }
+};
