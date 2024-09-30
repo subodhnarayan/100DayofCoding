@@ -43,3 +43,47 @@ Expected Auxiliary Space: O(Height of BST1 + Height of BST2 + m + n)
 Constraints:
 1 ≤ Number of Nodes, value of nodes ≤ 105
 
+
+
+
+/*
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+class Solution {
+  public:
+    // Function to return a list of integers denoting the node
+    // values of both the BST in a sorted order.
+    void preorder(Node* root,vector<int> &an){
+        if(root==NULL){
+            return;
+        }
+        
+            an.push_back(root->data);
+        preorder(root->left,an);
+        preorder(root->right,an);
+    }
+    vector<int> merge(Node *root1, Node *root2) {
+      vector<int> an1;
+      vector<int> an2;
+      preorder(root1,an1);
+      preorder(root2,an2);
+      for(int i=0;i<an2.size();i++){
+          an1.push_back(an2[i]);
+      }
+      sort(an1.begin(),an1.end());
+      return an1;
+    }
+};
+
+
+
+
