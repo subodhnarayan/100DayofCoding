@@ -132,3 +132,48 @@ Constraints:
 1 <= maxSize, x, k <= 1000
 0 <= val <= 100
 At most 1000 calls will be made to each method of increment, push and pop each separately.
+
+
+
+class CustomStack {
+public:
+    int msize;
+    vector<int> an;
+    int ind=-1;
+    CustomStack(int maxSize) {
+        msize=maxSize;
+        an.resize(maxSize);
+    }
+    
+    void push(int x) {
+        if(ind==msize-1){
+            return;
+        }
+        else{
+            ind++;
+            an[ind]=x;
+        }
+    }
+    
+    int pop() {
+        if(ind==-1){
+            return -1;
+        }
+        else if(ind==0){
+             int re=an[ind];
+            ind=-1;
+            return re;
+        }
+        else{
+            int re=an[ind];
+            ind--;
+            return re;
+        }
+    }
+    
+    void increment(int k, int val) {
+        for(int i=0;i<min(k,ind+1);i++){
+            an[i]=an[i]+val;
+        }
+    }
+};
