@@ -20,3 +20,23 @@ Expected Space Complexity: O(1)
 Constraint:
 1 <= nums.size() <= 106
 0 <= nums[i] <= 109
+
+
+class Solution {
+  public:
+    // Function to find the majority elements in the array
+    vector<int> findMajority(vector<int>& nums) {
+       unordered_map<int ,int>m;
+        for(auto &i:nums)
+            m[i]++;
+        vector<int>ans;
+        int n=nums.size();
+        for(auto &i:m)
+            if(i.second>n/3)
+                ans.emplace_back(i.first);
+        sort(ans.begin(),ans.end());
+        if(ans.size()==0)
+            ans.emplace_back(-1);
+        return ans;         
+    }
+};
