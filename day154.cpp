@@ -27,3 +27,89 @@ Expected Auxillary Space: O(1)
 Constraints:
 2 <= number of nodes, key  <= 105
 1 <= node -> data <= 105
+
+
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+// Structure for the linked list node
+struct Node {
+    int data;
+    struct Node *next;
+
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+// Function to print nodes in a given circular linked list
+void printList(struct Node *head) {
+    if (head != NULL) {
+        struct Node *temp = head;
+        do {
+            cout << temp->data << " ";
+            temp = temp->next;
+        } while (temp != head);
+    } else {
+        cout << "empty" << endl;
+    }
+    cout << endl;
+}
+
+
+// } Driver Code Ends
+class Solution {
+  public:
+    // Function to reverse a circular linked list
+    Node* reverse(Node* head) {
+           if (head == nullptr || head->next == head) return head;
+        Node* prev = nullptr;
+        Node* curr = head;
+        Node* frw = head->next;
+
+        while (frw != head) {
+            curr->next = prev;
+            prev = curr;
+            curr = frw;
+            frw = frw->next;
+        }
+        curr->next = prev;
+        frw->next = curr; 
+
+        return curr;
+    }
+
+    // Function to delete a node from the circular linked list
+    Node* deleteNode(Node* head, int key) {
+          if (head == nullptr) return head; 
+
+        Node* temp = head;
+        if (head->data == key) {
+            if (head->next == head) {
+                delete head;
+                return nullptr;
+            }
+            while (temp->next != head) {
+                temp = temp->next;
+            }
+            temp->next = head->next;
+            Node* toDelete = head;
+            head = head->next; 
+            delete toDelete;
+            return head;
+        }
+
+        while (temp->next != head && temp->next->data != key) {
+            temp = temp->next;
+        }
+        if (temp->next->data == key) {
+            Node* toDelete = temp->next;
+            temp->next = temp->next->next;
+            delete toDelete;
+        }
+
+        return head;
+    }
+};
