@@ -18,3 +18,29 @@ Expected Auxiliary Space: O(1)
 Constraints:
 2 ≤ arr.size() ≤ 106
 0 ≤ arr[i] ≤ 106
+
+
+
+class Solution {
+  public:
+    int pairsum(vector<int> &arr) {
+        // code here
+         int t1=arr[0];
+        int t2=arr[1];
+        for(int i=2;i<arr.size();i++){
+            if(arr[i]>t2){
+                if(t2>t1){
+                    t1=t2;
+                }
+                t2=arr[i];
+                }
+                else{
+                    if(arr[i]>t1){
+                        t1=arr[i];
+                    }
+                }
+            
+        }
+        return t1+t2;
+    }
+};
