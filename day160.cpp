@@ -77,3 +77,46 @@ Constraints:
 
 2 <= nums.length <= 5 * 104
 0 <= nums[i] <= 5 * 104
+
+
+  
+
+
+  class Solution {
+public:
+    int maxWidthRamp(vector<int>& nums) {
+    //  int n=arr.size();
+    //  int ans=0;
+    //  for(int i=0;i<n-1;i++){
+        
+    //     for(int j=i+1;j<n;j++){
+    //         if(arr[i]<=arr[j]){
+    //             ans=max(ans,j-i);
+    //         }
+    //     }
+    //  }  
+    //  return ans;  TC=o(n2)
+    
+  int n = nums.size();
+        stack<int> s;
+        
+        // Step 1: Build a decreasing stack of indices
+        for (int i = 0; i < n; ++i) {
+            if (s.empty() || nums[s.top()] > nums[i]) {
+                s.push(i);
+            }
+        }
+        
+        int maxWidth = 0;
+        
+        // Step 2: Traverse from the end and find maximum width ramp
+        for (int j = n - 1; j >= 0; --j) {
+            while (!s.empty() && nums[s.top()] <= nums[j]) {
+                maxWidth = max(maxWidth, j - s.top());
+                s.pop();
+            }
+        }
+        
+        return maxWidth;
+    }
+};
