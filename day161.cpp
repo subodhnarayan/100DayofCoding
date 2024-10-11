@@ -106,3 +106,55 @@ times[i].length == 2
 1 <= arrivali < leavingi <= 105
 0 <= targetFriend <= n - 1
 Each arrivali time is distinct.
+
+
+class Solution {
+public:
+    int smallestChair(vector<vector<int>>& times, int targetFriend) {
+       int n = times.size();
+        
+    // Create a list of pairs {arrivalTime, friendIndex} to track arrival times
+    vector<pair<int, int>> arrivals;
+    for (int i = 0; i < n; ++i) {
+        arrivals.push_back({times[i][0], i}); // {arrival time, friend index}
+    }
+        
+    // Sort friends based on their arrival times
+    sort(arrivals.begin(), arrivals.end());
+
+    // Min-Heap to track available chairs, initially all chairs [0, 1, 2, ..., n-1] are available
+    priority_queue<int, vector<int>, greater<int>> availableChairs;
+    for (int i = 0; i < n; ++i) {
+        availableChairs.push(i); // All chairs start as available
+    }
+
+    // Min-Heap to track when chairs are freed, storing {leave time, chair number}
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> leavingQueue;
+        
+    // Iterate through each friend based on arrival
+    for (auto& arrival : arrivals) {
+        int arrivalTime = arrival.first;    // Friend's arrival time
+        int friendIndex = arrival.second;   // Friend's index
+            
+        // Free up chairs for friends who have already left by the current arrival time
+        while (!leavingQueue.empty() && leavingQueue.top().first <= arrivalTime) {
+            availableChairs.push(leavingQueue.top().second); // Free the chair
+            leavingQueue.pop();
+        }
+            
+        // Assign the smallest available chair to the current friend
+        int chair = availableChairs.top(); 
+        availableChairs.pop(); // Remove that chair from available chairs
+            
+        // If this is the target friend, return their chair number
+        if (friendIndex == targetFriend) {
+            return chair;
+        }
+            
+        // Mark the chair as being used until the friend's departure time
+        leavingQueue.push({times[friendIndex][1], chair}); // {departure time, chair}
+    }
+        
+    return -1; // This line should never be reached if input is val
+    }
+};
