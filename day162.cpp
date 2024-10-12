@@ -29,3 +29,21 @@ Expected Space Complexity: O(1)
 Constraints:
 1<=arr.size()<=105 
 1<=arr[i]<=105
+
+
+class Solution {
+  public:
+    int pairWithMaxSum(vector<int>& arr) {
+        int n=arr.size();
+        if(n<2){
+            return -1;
+        }
+        int ans=INT_MIN;
+        for(int i=0;i<n;i++){
+          int first=min(arr[i],arr[i-1]);
+          int second=max(arr[i],arr[i-1]);
+          ans=max(ans,first+second);
+    }
+    return ans;
+    }
+};
