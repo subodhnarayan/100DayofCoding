@@ -22,3 +22,16 @@ Constraints:
 1 <= number of nodes <= 105
 1 <= node->data <= 103
 
+class Solution {
+  public:
+    void deleteAlt(struct Node *head) {
+      if(head==NULL) return;
+      Node* curr=head;
+      while(curr && curr->next){
+          Node* temp=curr->next;
+          curr->next=temp->next;
+          delete temp;
+          curr=curr->next;
+      }
+    }
+};
