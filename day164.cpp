@@ -78,3 +78,45 @@ Constraints:
 
 1 <= nums.length, k <= 105
 1 <= nums[i] <= 109
+
+
+
+class Solution {
+public:
+    long long maxKelements(vector<int>& arr, int k) {
+        // int n=arr.size();
+        // long long ans=0;
+        // for(int j=1;j<=k;j++){
+        //         int ind=0;
+        //         int ma=INT_MIN;
+        //         for(int i=0;i<n;i++){
+        //          if(arr[i]>ma){
+        //             ma=arr[i];
+        //             ind=i;
+        //          }
+        //         }
+        //         ans+=ma;
+        //         arr[ind]=ceil((double) arr[ind]/3);
+        // }
+        // return ans;
+
+        int n=arr.size();
+        priority_queue<long long> maxheap;
+        for(int x:arr){
+            maxheap.push((long long) x);
+        }
+        long long ans=0;
+        for(int i=1;i<=k;i++){
+            if(maxheap.empty()) break;
+
+            long long curr=maxheap.top();
+            maxheap.pop();
+
+            ans+=curr;
+            curr=(curr+2)/3;
+            maxheap.push(curr);
+
+        }
+        return ans;
+    }
+};
