@@ -21,3 +21,16 @@ Constraints:
 1 <= number of nodes <= 105
 1 <= node->data <= 103
 
+class Solution {
+  public:
+    // Function to count nodes of a linked list.
+    int getCount(struct Node* head) {
+        int count=0;
+        Node* curr=head;
+        while(curr){
+            count++;
+            curr=curr->next;
+        }
+        return count;
+    }
+};
