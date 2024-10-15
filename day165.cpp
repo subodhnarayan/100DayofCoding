@@ -125,3 +125,48 @@ Constraints:
 
 1 <= n == s.length <= 105
 s[i] is either '0' or '1'.
+
+
+
+class Solution {
+public:
+    long long minimumSteps(string s) {
+    //     int n=s.size();
+    //     long long ans=0;
+    //     int left=0;
+    //     int right=n-1;
+    //     while (left < right) {
+    //     // Find the next '1' from the left
+    //     while (left < right && s[left] == '0') {
+    //         left++;
+    //     }
+    //     // Find the next '0' from the right
+    //     while (left < right && s[right] == '1') {
+    //         right--;
+    //     }
+    //     // If valid '1' on left and '0' on right, swap them
+    //     if (left < right) {
+    //         swap(s[left], s[right]);
+    //         ans++;  // Increment the swap count
+    //         left++;
+    //         right--;
+    //     }
+    // }
+
+    // return ans;  // Return the number of swaps
+
+    // This will not work
+
+    int black=0;
+    long long swap=0;
+    for(char x:s){
+        if(x=='0'){
+            swap+=black;
+        }
+        else{
+            black++;
+        }
+    }
+    return swap;
+ }
+};
