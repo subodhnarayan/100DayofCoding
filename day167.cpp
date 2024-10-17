@@ -22,3 +22,36 @@ Output: 7 , <empty linked list>
 Constraints:
 1 <= number of nodes <= 100
 1 <= node -> data <= 104
+
+
+
+class Solution {
+  public:
+    // Function to split a linked list into two lists alternately
+    vector<Node*> alternatingSplitList(struct Node* head) {
+            if(head->next==NULL) return {head,NULL};
+        if(head->next->next==NULL){
+            Node *head1=head;
+            Node *head2=head->next;
+            head1->next=NULL;
+            return {head1,head2};
+        }
+        Node *head1,*head2,*curr1,*curr2;
+        head1=head;
+        head2=head->next;
+        curr1=head1;
+        curr2=head2;
+        while(curr2&&curr2->next){
+            curr1->next=curr2->next;
+            curr1=curr1->next;
+            if(curr2->next){
+                curr2->next=curr2->next->next;
+                curr2=curr2->next;
+            }
+            if(curr2&&curr2->next==NULL){
+                curr1->next=NULL;
+            }
+        }
+        return {head1,head2};
+    }
+};
