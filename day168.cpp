@@ -18,3 +18,27 @@ Expected Auxiliary Space: O(1)
 Constraints:
 1 ≤ arr.size() ≤ 106
 0 ≤ arri ≤ 105
+
+
+class Solution {
+  public:
+    int getSingle(vector<int>& arr) {
+        // unordered_map<int,int> mp;
+        // for(int i=0;i<arr.size();i++){
+        //     mp[arr[i]]++;
+        // }
+        
+        // for(auto a:mp){
+        //     if(a.second%2==1){
+        //         return a.first;
+        //     }
+        // }
+        
+        // return -1;
+        int ans=arr[0];
+        for(int i=1;i<arr.size();i++){
+            ans=ans^arr[i];
+        }
+        return ans;
+    }
+};
