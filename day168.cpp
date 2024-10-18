@@ -91,3 +91,34 @@ Constraints:
 
 1 <= nums.length <= 16
 1 <= nums[i] <= 105
+
+class Solution {
+public:
+      
+    int solve(int ind,int n,int curr,int tar,vector<int> nums){
+        if(ind==n){
+            if(curr==tar){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+
+        int pick=solve(ind+1,n,curr | nums[ind],tar,nums);
+
+        int notpick=solve(ind+1,n,curr,tar,nums);
+        
+        return pick+notpick;
+    }
+   
+    int countMaxOrSubsets(vector<int>& nums) {
+        int n=nums.size();
+        int tar=0;
+        for(int i=0;i<n;i++){
+            tar |=nums[i];
+        }
+
+         return solve(0,n,0,tar,nums);
+    }
+};
