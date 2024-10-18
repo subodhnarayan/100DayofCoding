@@ -21,7 +21,8 @@ Input: LinkedList: 7
 Output: 7 , <empty linked list>
 Constraints:
 1 <= number of nodes <= 100
-1 <= node -> data <= 104
+1 <= node -> data <= 
+104
 
 
 
@@ -55,7 +56,6 @@ class Solution {
         return {head1,head2};
     }
 };
-
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -Leetcode - POTD - 17 / 10 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
