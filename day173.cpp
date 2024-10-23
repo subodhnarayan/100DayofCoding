@@ -20,3 +20,24 @@ Constraints:
 1 <= number of nodes, n <= 105
 1 <= node->data <= 103
 
+int sumOfLastN_Nodes(struct Node* head, int n) {
+        // Code here
+          Node* temp = head;
+         vector<int> ans;
+         int res =0;
+         
+         
+         while(temp != NULL){
+             int d = temp -> data;
+             ans.push_back(d);
+             temp = temp -> next;
+         }
+         
+         int len = ans.size();
+         
+         for(int i= len-n; i<len; i++ ){
+             res += ans[i];
+         }
+         
+         return res;
+    }
