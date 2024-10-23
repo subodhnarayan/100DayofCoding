@@ -92,3 +92,40 @@ Constraints:
 
 The number of nodes in the tree is in the range [1, 105].
 1 <= Node.val <= 104
+
+
+class Solution {
+public:
+    void dfs(vector<TreeNode*> arr) {
+        if (arr.empty()) return;
+
+        int sum = 0;
+        for (auto node : arr) {
+            if (!node) continue;
+            if (node->left) sum += node->left->val;
+            if (node->right) sum += node->right->val;
+        }
+        vector<TreeNode*> childArr;
+        for (auto node : arr) {
+            int curSum = 0;
+            if (node->left) curSum += node->left->val;
+            if (node->right) curSum += node->right->val;
+
+            if (node->left) {
+                node->left->val = sum - curSum;
+                childArr.push_back(node->left);
+            }
+            if (node->right) {
+                node->right->val = sum - curSum;
+                childArr.push_back(node->right);
+            }
+        }
+
+        dfs(childArr);
+    }
+    TreeNode* replaceValueInTree(TreeNode* root) {
+        root->val = 0;
+        dfs(vector<TreeNode*>{root});
+        return root;
+    }
+};
