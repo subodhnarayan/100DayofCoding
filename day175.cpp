@@ -17,3 +17,19 @@ Expected Auxiliary Space: O(n).
 Constraints:
 1 ≤ arr.size() ≤ 105
 1 ≤ arr[i] ≤ 105
+
+
+class Solution {
+
+  public:
+    vector<int> alternateSort(vector<int>& a) {
+        sort(a.rbegin(),a.rend());
+        vector<int>ans;
+        int i=0,j=a.size()-1;
+        for(int k=0;k<a.size();k++){
+            if(k%2==0)ans.push_back(a[i++]);
+            else ans.push_back(a[j--]);
+        }
+        return ans;
+    }
+};
