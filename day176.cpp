@@ -20,3 +20,19 @@ Expected Auxiliary Space: O(1)
 Constraints:
 1 ≤ number of nodes, key ≤ 105
 1 ≤ data of node ≤ 105
+
+class Solution {
+  public:
+    int count(struct Node* head, int key) {
+        
+        int count=0;
+        Node* curr=head;
+        while(curr){
+            if(curr->data==key){
+                count++;
+            }
+            curr=curr->next;
+        }
+        return count;
+    }
+};
