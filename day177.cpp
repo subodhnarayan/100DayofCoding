@@ -86,6 +86,74 @@ Constraints:
 1 <= arr[0].length <= 300
 0 <= arr[i][j] <= 1
 
+class Solution {
+public:
+    bool checksquare(vector<vector<int>> mat,int i,int j,int row,int col,int sq){
+       for(int a=i;a<i+sq;a++){
+        if(a==row) return false;
+        else{
+            for(int b=j;b<j+sq;b++){
+                if(b==col) return false;
+                else{
+                    if(mat[a][b]!=1){
+                        return false;
+                    }
+                }
+            }
+        }
+       }
+       return true;
+    }
+    int countSquares(vector<vector<int>>& mat) {
+        // int row=mat.size();
+        // int col=mat[0].size();
+        // int sq=min(row,col);
+        // int count=0;
+        // for(int i=0;i<row;i++){
+        //     for(int j=0;j<col;j++){
+        //         for(int k=1;k<=sq;k++){
+        //             if(checksquare(mat,i,j,row,col,k)){
+        //                 count++;
+        //             }
+        //         }
+        //     }
+        // }
+        // return count++;  //TC=0(m*n*min(m,n));
+
+        int row=mat.size();
+        int col=mat[0].size();
+
+        vector<vector<int>> ans(row,vector<int>(col,0));
+
+        for(int i=0;i<row;i++){
+            ans[i][0]=mat[i][0];
+        }
+        for(int i=0;i<col;i++){
+            ans[0][i]=mat[0][i];
+        }
+
+        for(int i=1;i<row;i++){
+            for(int j=1;j<col;j++){
+                if(mat[i][j]==0){
+                    ans[i][j]=0;
+                }
+                else{
+                ans[i][j]=min(ans[i-1][j],min(ans[i][j-1],ans[i-1][j-1]))+1;
+                }
+            }
+        }
+         int count=0;
+         for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                count+=ans[i][j];
+            }
+        }
+
+        return count;
+
+    }
+};
+
 
 
 
