@@ -18,3 +18,22 @@ Expected Auxilary Space: O(1)
 Constraints:
 1 <= arr.size() <= 103
 0 <= arr[i] <= 105
+
+class Solution {
+  public:
+    bool findTriplet(vector<int>& arr) {
+        int n=arr.size();
+        sort(arr.begin(),arr.end());
+        for(int i=n-1;i>=0;i--){
+            int j=0,k=i-1;
+            while(j<k){
+                int sum=arr[j]+arr[k];
+                if(arr[i]==sum) return true;
+                else if(arr[i]>sum) j++;
+                else k--;
+            }
+        }
+        return false;
+        
+    }
+};
