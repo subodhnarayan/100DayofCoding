@@ -76,3 +76,83 @@ Constraints:
 
 2 <= nums.length <= 105
 2 <= nums[i] <= 105
+
+class Solution {
+public:
+    int longestSquareStreak(vector<int>& nums) {
+        // unordered_set<int> st;
+        // int n=nums.size();
+        // for(int i=0;i<n;i++){
+        //     st.insert(nums[i]);
+        // }
+
+        // int ans=-1;
+        // for(int i=0;i<n;i++){
+        //     vector<int> arr;
+        //     int num=nums[i];
+        //     for(int i=0;i<n;i++){
+        //         if(st.find(num*num)!=st.end()){
+        //             arr.push_back(num*num);
+        //             int siz=arr.size();
+        //             ans=max(ans,siz);
+        //             num=num*num;
+        //         }
+        //         else{
+        //             break;
+        //         }
+        //     }
+        // }
+        // if(ans==-1){
+        //     return -1;
+        // }
+        // return ans+1;
+
+    // unordered_set<int> st(nums.begin(), nums.end());
+    // int ans = -1;
+    
+    // for (int num : nums) {
+    //     int streakLength = 0;
+    //     while (st.find(num * num) != st.end()) {
+    //         streakLength++;
+    //         num = num * num;
+    //     }
+    //     ans = max(ans, streakLength);
+    // }
+    
+    // return ans == 0 ? -1 : ans + 1;   //7 test case passed
+
+    // unordered_set<int> st(nums.begin(), nums.end());
+    // int ans = -1;
+    
+    // for (int num : nums) {
+    //   if(st.find(sqrt(num))==st.end()){
+    //     int streakLength = 0;
+    //     long long curr=num;
+    //     while (st.find(curr * curr) != st.end()) {
+    //         streakLength++;
+    //         curr = curr * curr;
+    //     }
+    //     ans = max(ans, streakLength);
+    //   }
+    // }
+    
+    // return ans == 0 ? -1 : ans + 1;      //86 test case passed
+
+     map<int, int> mp;  // To store the length of streaks
+    sort(nums.begin(), nums.end());  // Sort nums in ascending order
+    int res = -1;
+
+    for (int num : nums) {
+        int _sqrt = sqrt(num);  // Compute the integer square root
+        if (_sqrt * _sqrt == num && mp.find(_sqrt) != mp.end()) {  // Check if num is a perfect square
+            mp[num] = mp[_sqrt] + 1;  // Build the streak from its square root
+            res = max(res, mp[num]);  // Update the maximum streak
+        } else {
+            mp[num] = 1;  // Start a new streak with length 1
+        }
+    }
+    return res;
+
+
+    }
+};
