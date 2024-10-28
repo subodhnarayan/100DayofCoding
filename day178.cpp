@@ -15,3 +15,25 @@ Output: [8, 7]
 Constraints:
 1<= arr.size() <=106
 2<= arr[i] <=100
+
+class Solution {
+  public:
+    vector<int> removeDuplicate(vector<int>& arr) {
+        unordered_set<int> st;
+        int n=arr.size();
+        vector<int> ans;
+        for(int i=0;i<n;i++){
+            if(st.find(arr[i])==st.end())
+             ans.push_back(arr[i]);
+            st.insert(arr[i]);
+           
+        }
+        // for(int &it:arr){
+        //     if(st.find(it)==st.end())
+        //     st.insert(it);
+        //     ans.push_back(it);
+        // }
+
+        return ans;
+    }
+};
