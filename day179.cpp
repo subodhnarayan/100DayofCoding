@@ -94,3 +94,39 @@ n == grid[i].length
 2 <= m, n <= 1000
 4 <= m * n <= 105
 1 <= grid[i][j] <= 106
+
+
+class Solution {
+public:
+    int m,n;
+    vector<int> dirs={-1,0,1};
+
+    int dfs(int row,int col,vector<vector<int>> &gr,vector<vector<int>> &dp){
+
+        if(dp[row][col]!=-1){
+            return dp[row][col];
+        }
+       int move=0;
+       for(int dir:dirs){
+        int newrow=row+dir;
+        int newcol=col+1;
+
+        if(newrow>=0 && newrow<m && newcol<n && gr[newrow][newcol]>gr[row][col]){
+            move=max(move,1+dfs(newrow,newcol,gr,dp));
+        }
+        
+       }
+       return dp[row][col]=move;
+    }
+    
+    int maxMoves(vector<vector<int>>& grid) {
+        m=grid.size();
+        n=grid[0].size();
+        int ans=0;
+        vector<vector<int>> dp(m,vector<int> (n,-1));
+        for(int i=0;i<m;i++){
+            ans=max(ans,dfs(i,0,grid,dp));
+        }
+        return ans;
+    }
+};
