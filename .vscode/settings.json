@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    ".env*": "dotenv",
     "concepts": "cpp",
     "string_view": "cpp",
     "ranges": "cpp",
@@ -15,6 +16,7 @@
     "initializer_list": "cpp",
     "regex": "cpp",
     "valarray": "cpp",
-    "functional": "cpp"
+    "functional": "cpp",
+    "*.tcc": "cpp"
   }
 }
