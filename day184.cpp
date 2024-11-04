@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 3 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 Is Linked List Length Even?
 Difficulty: BasicAccuracy: 71.58%Submissions: 86K+Points: 1
