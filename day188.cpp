@@ -56,7 +56,7 @@ class Solution {
     }
 };
 
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 7 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -Leetcode - POTD - 7 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 2275. Largest Combination With Bitwise AND Greater Than Zero
 Solved
@@ -95,3 +95,19 @@ Constraints:
 
 1 <= candidates.length <= 105
 1 <= candidates[i] <= 107
+
+
+class Solution {
+public:
+    int largestCombination(vector<int>& candidates) {
+         int n = candidates.size(),ans = 0;
+        for(int i=0;i<32;i++){
+            int cnt = 0;
+            for(auto candidate : candidates){
+                if(candidate & (1<<i))cnt++;
+            }
+            ans = max(ans,cnt);
+        }
+        return ans;
+    }
+};
