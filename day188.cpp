@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 17 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 7 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 Split array in three equal sum subarrays
 Difficulty: MediumAccuracy: 52.9%Submissions: 16K+Points: 4
 Given an array, arr[], determine if arr can be split into three consecutive parts such that the sum of each part is equal. If possible, return any index pair(i, j) in an array such that sum(arr[0..i]) = sum(arr[i+1..j]) = sum(arr[j+1..n-1]), otherwise return an array {-1,-1}.
@@ -55,3 +55,43 @@ class Solution {
         return {-1,-1};
     }
 };
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -GFG - POTD - 7 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+2275. Largest Combination With Bitwise AND Greater Than Zero
+Solved
+Medium
+Topics
+Companies
+Hint
+The bitwise AND of an array nums is the bitwise AND of all integers in nums.
+
+For example, for nums = [1, 5, 3], the bitwise AND is equal to 1 & 5 & 3 = 1.
+Also, for nums = [7], the bitwise AND is 7.
+You are given an array of positive integers candidates. Evaluate the bitwise AND of every combination of numbers of candidates. Each number in candidates may only be used once in each combination.
+
+Return the size of the largest combination of candidates with a bitwise AND greater than 0.
+
+ 
+
+Example 1:
+
+Input: candidates = [16,17,71,62,12,24,14]
+Output: 4
+Explanation: The combination [16,17,62,24] has a bitwise AND of 16 & 17 & 62 & 24 = 16 > 0.
+The size of the combination is 4.
+It can be shown that no combination with a size greater than 4 has a bitwise AND greater than 0.
+Note that more than one combination may have the largest size.
+For example, the combination [62,12,24,14] has a bitwise AND of 62 & 12 & 24 & 14 = 8 > 0.
+Example 2:
+
+Input: candidates = [8,8]
+Output: 2
+Explanation: The largest combination [8,8] has a bitwise AND of 8 & 8 = 8 > 0.
+The size of the combination is 2, so we return 2.
+ 
+
+Constraints:
+
+1 <= candidates.length <= 105
+1 <= candidates[i] <= 107
