@@ -45,3 +45,6 @@ class Solution {
     return (ptr1 ? ptr1->data : -1);
     }
 };
+
+
+-- -- -- -- -- -- -- -- -Leetcode - POTD - 13 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
