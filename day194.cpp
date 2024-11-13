@@ -26,3 +26,22 @@ Try to solve the problem without using any extra space.
 Constraints:
 2 ≤ size of first linkedist + size of second linkedlist ≤ 2*105
 -10000 ≤ data of nodes ≤ 10000
+
+class Solution {
+  public:
+    // Function to find intersection point in Y shaped Linked Lists.
+    int intersectPoint(Node* head1, Node* head2) {
+         if (!head1 || !head2) return -1;  // No intersection if one list is empty
+    
+    Node* ptr1 = head1;
+    Node* ptr2 = head2;
+    
+    while (ptr1 != ptr2) {
+        ptr1 = (ptr1 == nullptr) ? head2 : ptr1->next;
+        ptr2 = (ptr2 == nullptr) ? head1 : ptr2->next;
+    }
+    
+    // ptr1 (or ptr2) will be nullptr if there's no intersection, or the intersection node otherwise.
+    return (ptr1 ? ptr1->data : -1);
+    }
+};
