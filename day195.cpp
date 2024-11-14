@@ -19,3 +19,27 @@ Constraints:
 1 ≤ arr.size() ≤ 106
 0 ≤ k < arr.size()
 1 ≤ arri ≤ 106
+
+
+
+class Solution {
+  public:
+    void nearlySorted(vector<int>& arr, int k) {
+        // code
+         priority_queue<int, vector<int>,
+        greater<int>> minH;
+        int j = 0;
+        for(int i = 0; i < arr.size(); i++) {
+            if(minH.size() == k) {
+                minH.push(arr[i]);
+                arr[j++] = minH.top();
+                minH.pop();
+            }
+            else minH.push(arr[i]);
+        }
+        while(minH.size() > 0) {
+            arr[j++] = minH.top();
+            minH.pop();
+        }
+    }
+};
