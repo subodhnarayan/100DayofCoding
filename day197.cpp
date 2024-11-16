@@ -95,3 +95,36 @@ Constraints:
 1 <= n == nums.length <= 500
 1 <= nums[i] <= 105
 1 <= k <= n
+
+
+class Solution {
+public:
+    vector<int> resultsArray(vector<int>& nums, int k) {
+        vector<int> results;
+        int n = nums.size();
+        
+        // Iterate over all subarrays of size k
+        for (int i = 0; i <= n - k; i++) {
+            bool isValid = true;
+            int maxVal = nums[i];
+            
+            // Check conditions for the subarray
+            for (int j = i; j < i + k - 1; j++) {
+                if (nums[j] >= nums[j + 1] || nums[j + 1] - nums[j] != 1) {
+                    isValid = false;
+                    break;
+                }
+                maxVal = max(maxVal, nums[j + 1]);
+            }
+            
+            // Append result based on validity
+            if (isValid) {
+                results.push_back(maxVal);
+            } else {
+                results.push_back(-1);
+            }
+        }
+        
+        return results;
+    }
+};
