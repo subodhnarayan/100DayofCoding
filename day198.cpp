@@ -67,3 +67,60 @@ Constraints:
 1 <= nums.length <= 105
 -105 <= nums[i] <= 105
 1 <= k <= 109
+
+class Solution {
+public:
+    int shortestSubarray(vector<int>& nums, int k) {
+
+        //brute force approach
+        // int ans = INT_MAX;
+        // int n = nums.size();
+        
+        // for (int i = 0; i < n; i++) {
+        //     int sum = 0;
+        //     for (int j = i; j < n; j++) {
+        //         sum += nums[j];
+        //         if (sum >= k) {
+        //             ans = min(ans, j - i + 1);
+        //             break; // Exit inner loop as we found a valid subarray starting at i
+        //         }
+        //     }
+        // }
+        
+        // return ans == INT_MAX ? -1 : ans;
+        //optimized approach
+
+        int n = nums.size();
+        vector<long long> culsum(n); // Prefix sum array
+        deque<int> deq;             // Monotonic deque
+        int ans = INT_MAX;
+
+        // Compute prefix sums and process with deque
+        for (int j = 0; j < n; j++) {
+            // Compute prefix sum
+            culsum[j] = nums[j] + (j > 0 ? culsum[j - 1] : 0);
+
+            // Check if the current prefix sum itself meets the condition
+            if (culsum[j] >= k) {
+                ans = min(ans, j + 1);
+            }
+
+            // Check if any subarray ending at j meets the condition
+            while (!deq.empty() && culsum[j] - culsum[deq.front()] >= k) {
+                ans = min(ans, j - deq.front());
+                deq.pop_front(); // Correctly pop from the front
+            }
+
+            // Maintain monotonicity of the deque
+            while (!deq.empty() && culsum[j] <= culsum[deq.back()]) {
+                deq.pop_back();
+            }
+
+            // Push the current index to the deque
+            deq.push_back(j);
+        }
+
+        // Return the result
+        return ans == INT_MAX ? -1 : ans;
+    }
+};
