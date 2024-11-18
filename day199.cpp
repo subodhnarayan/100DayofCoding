@@ -22,23 +22,41 @@ Constraints:
 0 <= arr[i] <= 105
 
 
-void rotateArr(vector<int>& arr, int d) {
+     void reverse(vector<int> &arr,int start,int end){
+         while(start<end){
+             int temp=arr[start];
+             arr[start]=arr[end];
+             arr[end]=temp;
+             start++,end--;
+             
+         }
+     }
+     
+    void rotateArr(vector<int>& arr, int k) {
+        //soln with S.C=O(d)
+        // int n=arr.size();
+        // int ans = d % n;
+        // vector<int> st;
+        // for(int i=0;i<ans;i++){
+        //     st.push_back(arr[i]);
+        // }
+        // int j=0;
+        // for(int i=ans;i<n;i++){
+        //     arr[j]=arr[i];
+        //     j++;
+        // }
+        // int k=0;
+        // for(int i=n-ans;i<n;i++){
+        //     arr[i]=st[k];
+        //     k++;
+        // }
+        
+        //optimized solution
         int n=arr.size();
-        int ans = d % n;
-        vector<int> st;
-        for(int i=0;i<ans;i++){
-            st.push_back(arr[i]);
-        }
-        int j=0;
-        for(int i=ans;i<n;i++){
-            arr[j]=arr[i];
-            j++;
-        }
-        int k=0;
-        for(int i=n-ans;i<n;i++){
-            arr[i]=st[k];
-            k++;
-        }
+        k=k%n;
+        reverse(arr,0,k-1);
+        reverse(arr,k,n-1);
+        reverse(arr,0,n-1);
     }
 
 
