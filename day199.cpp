@@ -82,3 +82,37 @@ n == code.length
 1 <= n <= 100
 1 <= code[i] <= 100
 -(n - 1) <= k <= n - 1
+
+class Solution {
+public:
+    vector<int> decrypt(vector<int>& code, int k) {
+        int n=code.size();
+        vector<int> ans;
+        if(k==0){
+         for(int i=0;i<n;i++){
+            ans.push_back(0);
+         }
+         return ans;
+        }
+        else if(k>0){
+            for(int i=0;i<n;i++){
+                int sum=0;
+                for(int j=1;j<=k;j++){
+                    sum+=code[(i+j)%n];
+                }
+                ans.push_back(sum);
+            }
+            return ans;
+        }
+        else{
+           for(int i=0;i<n;i++){
+                int sum=0;
+                for(int j=1;j<=-k;j++){
+                    sum+=code[(i - j + n) % n];
+                }
+                ans.push_back(sum);
+            }
+            return ans;
+        }
+    }
+};
