@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -GFG - POTD - 17 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -GFG - POTD - 18 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 Rotate Array
 Difficulty: MediumAccuracy: 37.06%Submissions: 377K+Points: 4
@@ -43,7 +43,7 @@ void rotateArr(vector<int>& arr, int d) {
 
 
 
--- -- -- -- -- -- -- -- -Leetcode - POTD - 17 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -Leetcode - POTD - 18 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
 You have a bomb to defuse, and your time is running out! Your informer will provide you with a circular array code of length of n and a key k.
@@ -82,6 +82,8 @@ n == code.length
 1 <= n <= 100
 1 <= code[i] <= 100
 -(n - 1) <= k <= n - 1
+
+
 
 class Solution {
 public:
