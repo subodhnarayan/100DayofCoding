@@ -20,3 +20,27 @@ Explanation: when we rotate 9 times, we'll get 3 9 1 7 as resultant array.
 Constraints:
 1 <= arr.size(), d <= 105
 0 <= arr[i] <= 105
+
+
+void rotateArr(vector<int>& arr, int d) {
+        int n=arr.size();
+        int ans = d % n;
+        vector<int> st;
+        for(int i=0;i<ans;i++){
+            st.push_back(arr[i]);
+        }
+        int j=0;
+        for(int i=ans;i<n;i++){
+            arr[j]=arr[i];
+            j++;
+        }
+        int k=0;
+        for(int i=n-ans;i<n;i++){
+            arr[i]=st[k];
+            k++;
+        }
+    }
+
+
+
+-- -- -- -- -- -- -- -- -Leetcode - POTD - 17 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
