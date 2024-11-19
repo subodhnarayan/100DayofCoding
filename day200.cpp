@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -GFG - POTD - 18 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -GFG - POTD - 19 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 Next Permutation
 Difficulty: MediumAccuracy: 40.66%Submissions: 156K+Points: 4
 Given an array of integers arr[] representing a permutation, implement the next permutation that rearranges the numbers into the lexicographically next greater permutation. If no such permutation exists, rearrange the numbers into the lowest possible order (i.e., sorted in ascending order). 
@@ -49,7 +49,7 @@ class Solution {
 
 
 
-
+-- -- -- -- -- -- -- -- -GFG - POTD - 19 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 2461. Maximum Sum of Distinct Subarrays With Length K
 Solved
@@ -91,3 +91,5 @@ Constraints:
 
 1 <= k <= nums.length <= 105
 1 <= nums[i] <= 105
+
+
