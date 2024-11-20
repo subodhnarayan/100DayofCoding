@@ -17,3 +17,24 @@ Explanation: no candidate occur more than n/3 times.
 Constraint:
 1 <= arr.size() <= 106
 -109 <= arr[i] <= 109
+
+
+class Solution {
+  public:
+    // Function to find the majority elements in the array
+    vector<int> findMajority(vector<int>& arr) {
+        map<int,int> mp;
+        vector<int> ans;
+        for(int num:arr){
+            mp[num]++;
+        }
+        int n=arr.size();
+        int sum=n/3;
+        for(const auto& pair:mp){
+            if(pair.second>sum){
+                ans.push_back(pair.first);
+            }
+        }
+        return ans;
+    }
+};
