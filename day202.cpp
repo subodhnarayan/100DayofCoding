@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -GFG - POTD - 20 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -GFG - POTD - 21 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 Majority Element II
 Difficulty: MediumAccuracy: 48.1%Submissions: 84K+Points: 4
