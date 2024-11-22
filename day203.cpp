@@ -1,16 +1,6 @@
 -- -- -- -- -- -- -- -- -GFG - POTD - 22 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
-ourses
-Tutorials
-Jobs
-Practice
-Contests
-S
-38
-
-
-
 Stock Buy and Sell – Max one Transaction Allowed
 Difficulty: EasyAccuracy: 49.33%Submissions: 31K+Points: 2
 Given an array prices[] of length n, representing the prices of the stocks on different days. The task is to find the maximum profit possible by buying and selling the stocks on different days when at most one transaction is allowed. Here one transaction means 1 buy + 1 Sell. If it is not possible to make a profit then return 0.
@@ -118,3 +108,4 @@ public:
         return maxCount;
     }
 };
+
