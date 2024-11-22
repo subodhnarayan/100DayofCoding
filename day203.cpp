@@ -32,6 +32,22 @@ Constraint:
 1 <= prices.size()<= 105
 0 <= prices[i] <=104
 
+class Solution {
+  public:
+    int maximumProfit(vector<int> &prices) {
+        int n=prices.size();
+        int profit=0;
+        int buy=prices[0];
+        for(int i=0;i<n;i++){
+            buy=min(buy,prices[i]);
+            
+            int cprof=prices[i]-buy;
+            profit=max(cprof,profit);
+        }
+        return profit;
+    }
+};
+
 
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 22 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
