@@ -1,7 +1,5 @@
 -- -- -- -- -- -- -- -- -GFG - POTD - 25 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
-
-
 Maximum Product Subarray
 Difficulty: MediumAccuracy: 18.09%Submissions: 402K+Points: 4
 Given an array arr[] that contains positive and negative integers (may contain 0 as well). Find the maximum product that we can get in a subarray of arr.
@@ -22,6 +20,31 @@ Explanation: For an array with all positive elements, the result is product of a
 Constraints:
 1 ≤ arr.size() ≤ 106
 -10  ≤  arr[i]  ≤  10
+
+
+class Solution {
+  public:
+    // Function to find maximum product subarray
+    int maxProduct(vector<int> &arr) {
+        // Your Code Here
+         int n=arr.size();
+        if(n==1)
+         return arr[0];
+        int sum=0;
+        for(int i=0;i<n;i++){
+            int ans=arr[i];
+              sum=max(sum,ans);
+            for(int j=i+1;j<n;j++){
+                ans*=arr[j];
+                  sum=max(sum,ans);
+            }
+            
+        }
+        return sum;
+    }
+};
+
+
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 25 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 773. Sliding Puzzle
 Solved
