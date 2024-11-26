@@ -130,3 +130,23 @@ The input is generated such that if team a is stronger than team b, team b is no
 The input is generated such that if team a is stronger than team b and team b is stronger than team c, then team a is stronger than team c.
 
 
+class Solution {
+public:
+    int findChampion(int n, vector<vector<int>>& edges) {
+        bitset<100> losses; 
+        
+        for (const auto& edge : edges) {
+            losses.set(edge[1]);
+        }
+        
+        int champion = -1;
+        for (int i = 0; i < n; i++) {
+            if (!losses[i]) {
+                if (champion != -1) return -1;
+                champion = i;
+            }
+        }
+        
+        return champion;
+    }
+};
