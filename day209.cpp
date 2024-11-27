@@ -20,3 +20,19 @@ Explanation: Smallest positive missing number is 1.
 Constraints:  
 1 <= arr.size() <= 105
 -106 <= arr[i] <= 106
+
+
+class Solution {
+  public:
+    // Function to find the smallest positive number missing from the array.
+    int missingNumber(vector<int> &arr) {
+        set<int>st;
+        for(int i=0;i<arr.size();i++){
+            st.insert(arr[i]);
+        }
+        for(int i=1;i<=100000;i++){
+            if(st.find(i)==st.end()) return i;
+        }
+        return 0;
+    }
+};
