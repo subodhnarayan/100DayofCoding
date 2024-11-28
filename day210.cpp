@@ -1,3 +1,4 @@
+-- -- -- -- -- -- -- -- -GFG - POTD - 28 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 Implement Atoi
 Difficulty: MediumAccuracy: 32.58%Submissions: 233K+Points: 4
 Given a string s, the objective is to convert it into integer format without utilizing any built-in functions. Refer the below steps to know about atoi() function.
@@ -27,6 +28,8 @@ Output: -12
 Explanation: Nothing is read after -12 as a non-digit character ‘g’ was encountered.
 Constraints:
 1 ≤ |s| ≤ 15
+
+
 
 
 
