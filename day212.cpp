@@ -21,6 +21,25 @@ Constraints:
 1 ≤ s1.size(), s2.size() ≤ 105
 
 
+class Solution {
+  public:
+    // Function is to check whether two strings are anagram of each other or not.
+    bool areAnagrams(string& s1, string& s2) {
+        map<char,int> mp1,mp2;
+        int n1=s1.size();
+        int n2=s2.size();
+        if(n1!=n2) return false;
+        for(char c:s1){
+            mp1[c]++;
+        }
+        for(char c:s2){
+            mp2[c]++;
+        }
+        return mp1==mp2;
+        
+    }
+};
+
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 30 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
