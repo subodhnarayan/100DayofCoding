@@ -1,5 +1,5 @@
 -- -- -- -- -- -- -- -- -GFG - POTD - 30 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
-
+sa
 Anagram
 Difficulty: EasyAccuracy: 44.93%Submissions: 357K+Points: 2
 Given two strings s1 and s2 consisting of lowercase characters. The task is to check whether two given strings are an anagram of each other or not. An anagram of a string is another string that contains the same characters, only the order of characters can be different. For example, act and tac are an anagram of each other. Strings s1 and s2 can only contain lowercase alphabets.
