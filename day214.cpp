@@ -1,5 +1,10 @@
 -- -- -- -- -- -- -- -- -GFG - POTD - 02 / 12 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
+
+
+
+-- -- -- -- -- -- -- -- -Leetcode - POTD - 02 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
 Solved
 Easy
@@ -38,7 +43,22 @@ Constraints:
 sentence consists of lowercase English letters and spaces.
 searchWord consists of lowercase English letters.
 
-
-
--- -- -- -- -- -- -- -- -Leetcode - POTD - 02 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
-
+class Solution {
+public:
+    int isPrefixOfWord(string sentence, string searchWord) {
+        istringstream stream(sentence);
+        string word;
+        int index = 1; // 1-based index
+        
+        while (stream >> word) {
+            // Check if the word starts with the searchWord
+            if (word.find(searchWord) == 0) {
+                return index;
+            }
+            index++;
+        }
+        
+        // Return -1 if no word starts with the searchWord
+        return -1;
+    }
+};
