@@ -23,6 +23,22 @@ Constraints:
 Both the strings consist of lowercase English alphabets.
 
 
+class Solution {
+  public:
+    vector<int> search(string& pat, string& txt) {
+         vector<int> indices;
+        size_t pos = txt.find(pat); // Start searching for the pattern
+
+        while (pos != string::npos) { // Until no more matches are found
+        indices.push_back(pos);        // Store the position
+        pos = txt.find(pat, pos + 1);  // Search for the next occurrence
+        }
+
+        return indices;
+    }
+};
+
+
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 02 / 11 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
