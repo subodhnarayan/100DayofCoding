@@ -98,3 +98,28 @@ s consists only of lowercase and uppercase English letters.
 1 <= spaces.length <= 3 * 105
 0 <= spaces[i] <= s.length - 1
 All the values of spaces are strictly increasing.
+
+
+class Solution {
+public:
+    string addSpaces(string s, vector<int>& spaces) {
+        sort(spaces.begin(), spaces.end());
+
+        int n = s.length(), m = spaces.size();
+        string ans = "";
+        int j = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (j < m && i == spaces[j])
+            {
+                ans.push_back(' ');
+                j++;
+            }
+
+            ans.push_back(s[i]);
+        }
+
+        return ans;
+    }
+};
