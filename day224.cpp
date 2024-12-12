@@ -19,7 +19,55 @@ Constraints:
 1 ≤ arr[i] ≤ 106
 1 ≤ target ≤ 106
 
-
+class Solution {
+  public:
+    int countFreq(vector<int>& arr, int target) {
+        // int count=0;
+        // for(int i=0;i<arr.size();i++){
+        //     if(arr[i]==target){
+        //         count++;
+        //     }
+        // }
+        // return count;
+        int n=arr.size();
+        int find=-1;
+        int lind=-1;
+        int start=0;
+        int end=n-1;
+        
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(arr[mid]>=target){
+                if(arr[mid]==target){
+                find=mid;
+                }
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+        start=0;
+        end=n-1;
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(arr[mid]<=target){
+                if(arr[mid]==target){
+                lind=mid;
+                }
+                start=mid+1;
+            }
+            else{
+                end=mid-1;
+            }
+        }
+        
+        if(find==-1 || lind==-1) return 0;
+        
+        return lind-find+1;
+        
+    }
+};
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 12 / 12 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
