@@ -115,3 +115,23 @@ Constraints:
 1 <= gifts.length <= 103
 1 <= gifts[i] <= 109
 1 <= k <= 103
+
+
+
+
+class Solution {
+public:
+    long long pickGifts(vector<int>& gifts, int k) {
+        while (k--) {
+            sort(gifts.rbegin(), gifts.rend());
+            int pile = gifts[0];
+            gifts.erase(gifts.begin());
+            gifts.push_back(sqrt(pile));
+        }
+        long long ans = 0;
+        for (auto u : gifts) {
+            ans += u;
+        }
+        return ans;
+    }
+};
