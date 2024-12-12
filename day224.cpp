@@ -122,16 +122,39 @@ Constraints:
 class Solution {
 public:
     long long pickGifts(vector<int>& gifts, int k) {
-        while (k--) {
-            sort(gifts.rbegin(), gifts.rend());
-            int pile = gifts[0];
-            gifts.erase(gifts.begin());
-            gifts.push_back(sqrt(pile));
+        // while (k--) {
+        //     sort(gifts.rbegin(), gifts.rend());
+        //     int pile = gifts[0];
+        //     gifts.erase(gifts.begin());
+        //     gifts.push_back(sqrt(pile));
+        // }
+        // long long ans = 0;
+        // for (auto u : gifts) {
+        //     ans += u;
+        // }
+        // return ans;
+
+
+
+        //another way usin priority queue
+
+
+        //1. first heapifying
+
+        priority_queue<int> pq(begin(gifts),end(gifts));
+
+        long long sum=0;
+        for(int &it:gifts){
+            sum+=it;
         }
-        long long ans = 0;
-        for (auto u : gifts) {
-            ans += u;
+        long long sm=0;
+        while(k--){
+            int maxele=pq.top();
+            pq.pop();
+            int rem=sqrt(maxele);
+            sm+=(maxele-rem);
+            pq.push(rem);
         }
-        return ans;
+        return sum-sm;
     }
 };
