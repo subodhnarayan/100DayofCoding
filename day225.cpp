@@ -44,3 +44,58 @@ Constraints:
 
 1 <= nums.length <= 105
 1 <= nums[i] <= 106
+
+
+class Solution {
+public:
+    long long findScore(vector<int>& nums) {
+        long score = 0;
+        int n = nums.size();
+
+        // Processing alternating elements
+        for (int i = 0; i < n; i += 2) 
+        {
+            // Store the starting index for the current segment
+            int i0 = i;
+
+            // Find the last element in decreasing segment
+            while (i + 1 < n && nums[i] > nums[i + 1])
+                // Just keep moving to the next element if it's smaller
+                ++i;
+
+            // Add the elements of the current decreasing segment to the score
+            for (int j = i; j >= i0; j -= 2)
+                // Add every alternate element in this segment to the score
+                score += nums[j];
+        }
+
+        // Marking adjacent elements and summing scores
+        vector<bool> marked(n, false);
+        long sorted = 0;
+
+        // Loop through each element in the nums array
+        for (int i = 0; i < n; ++i) 
+        {
+            // If the current element is not marked, process it
+            if (!marked[i]) 
+            {
+                // Add the current elements value to the score
+                // Actually, I don't need this
+                sorted += nums[i];
+
+                // Mark the left neighbor
+                if (i - 1 >= 0) 
+                {
+                    marked[i - 1] = true;
+                }
+                // Mark the right neighbor
+                if (i + 1 < n) 
+                {
+                    marked[i + 1] = true;
+                }
+            }
+        }
+        // Return the total score accumulated
+        return score;
+    }
+};
