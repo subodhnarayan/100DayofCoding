@@ -21,6 +21,34 @@ Constraints:
 
 
 
+class Solution {
+  public:
+    int findMin(vector<int>& arr) {
+        //brute force
+        // int n=arr.size();
+        // int ans=INT_MAX;
+        // for(int i=0;i<n;i++){
+        //     ans=min(arr[i],ans);
+        // }
+        // return ans;  TC=O(N)
+        
+        int n=arr.size();
+        int start=0;
+        int end=n-1;
+        int ans=INT_MAX;
+        while(start<end){
+            int mid=(start+end)/2;
+            //left side sorted
+            if(arr[end]<arr[mid]){
+                start=mid+1;
+            }
+            else{
+                end=mid;
+            }
+        }
+        return arr[start];
+    }
+};
 
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 13 / 12 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
