@@ -21,6 +21,8 @@ Constraints:
 1 ≤ key ≤ 106
 
 
+Time Complexity: O(log n)Auxiliary Space: O(1)
+
 class Solution {
   public:
     int search(vector<int>& arr, int key) {
