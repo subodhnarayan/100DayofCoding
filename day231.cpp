@@ -41,6 +41,9 @@ class Solution {
     }
 };
 
+
+Time Complexity: O(log n)Auxiliary Space: O(1)
+
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 19 / 12 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
