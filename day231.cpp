@@ -21,6 +21,8 @@ Constraints:
 1 <= k <= 105
 1 <= arr[i]<= 106
 
+Time Complexity: O(log n)Auxiliary Space: O(1)
+
 class Solution {
   public:
     int kthMissing(vector<int> &arr, int k) {
@@ -42,7 +44,7 @@ class Solution {
 };
 
 
-Time Complexity: O(log n)Auxiliary Space: O(1)
+
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 19 / 12 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
