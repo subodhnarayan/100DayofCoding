@@ -22,6 +22,32 @@ Constraints:
 1 ≤ n ≤ 102
 0 <= mat[i][j] <= 103
 
+class Solution {
+  public:
+    // Function to rotate matrix anticlockwise by 90 degrees.
+    void rotateby90(vector<vector<int>>& arr) {
+        int n=arr.size();
+       for(int i=0;i<n-1;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                swap(arr[i][j],arr[j][i]);
+            }
+        }
+    for(int i=0;i<n;i++)
+    {
+        int start=0;
+        int end=n-1;
+        while(start<end)
+        {
+            swap(arr[start][i],arr[end][i]);
+            start++;
+            end--;
+        }
+    }
+    }
+};
+
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 21 / 12 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
