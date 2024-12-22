@@ -21,6 +21,48 @@ Constraints:
 1<= x <= 109
 
 
+class Solution {
+  public:
+    bool matSearch(vector<vector<int>> &mat, int X) {
+        int N=mat.size();
+        int M=mat[0].size();
+            if(M==0 || N==0) return 0;
+	    int row=N;
+	    int col=M;
+	    int start=0;
+	    int end=M-1;  //starting from top right corner
+	    while(start<row && end<col){
+	       // int mid=start+(end-start)/2;
+	       // int ro_idx=mid/M;
+	       // int co_idx=mid%M;
+	       // if(mat[ro_idx][co_idx]==X)
+	       // {
+	       //     return 1;
+	       // }
+	       // else if(mat[ro_idx][co_idx]<X){
+	       //     start=mid+1;
+	       // }
+	       // else
+	       // {
+	       //     end=mid-1;
+	       // }  it will not work here
+	       
+	       
+	       if(mat[start][end]==X){
+	           return 1;
+	       }
+	       else if(mat[start][end]>X){
+	           end--;
+	       }
+	       else{
+	           start++;
+	       }
+	       
+	    }
+	    return 0;
+
+    }
+};
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 22 / 12 / 2024 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
