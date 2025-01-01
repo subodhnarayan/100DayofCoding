@@ -26,6 +26,30 @@ Constraints:
 
 
 
+class Solution {
+  public:
+  
+    vector<vector<string>> anagrams(vector<string>& arr) {
+        // code here
+          map<string,vector<string>> anagram;
+        
+        for(auto str:arr){
+            string sortedString = str;
+            sort(sortedString.begin(),sortedString.end());
+            anagram[sortedString].push_back(str);
+        }
+        
+        vector<vector<string>> ans;
+        
+        for(auto i :anagram){
+            // sort(i.second.begin(),i.second.end());
+            ans.push_back(i.second);
+        }
+        
+        return ans;
+    }
+};
+
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 01 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
