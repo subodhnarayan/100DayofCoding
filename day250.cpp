@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -GFG - POTD - 03 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -GFG - POTD - 04 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 Count all triplets with given sum in sorted array
 Difficulty: MediumAccuracy: 48.57%Submissions: 31K+Points: 4
 Given a sorted array arr[] and a target value, the task is to count triplets (i, j, k) of valid indices, such that arr[i] + arr[j] + arr[k] = target and i < j < k.
@@ -62,7 +62,7 @@ class Solution {
         return count;
     }
 };
--- -- -- -- -- -- -- -- -LeetCode - POTD - 03 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -LeetCode - POTD - 04 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 1930. Unique Length-3 Palindromic Subsequences
 Solved
 Medium
