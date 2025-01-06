@@ -1,13 +1,4 @@
-<<<<<<< HEAD
--- -- -- -- -- -- -- -- -GFG - POTD - 06 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
-
-
-
-
--- -- -- -- -- -- -- -- -Leetcode - POTD - 06 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
-
-=======
 -- -- -- -- -- -- -- -- -GFG - POTD - 02 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 Subarrays with sum K
 Difficulty: MediumAccuracy: 49.74%Submissions: 57K+Points: 4
@@ -123,4 +114,3 @@ public:
         return ans;
     }
 };
->>>>>>> 86e2c8207acca9ceffc6ed9f9e3ac81cd97fb90b
