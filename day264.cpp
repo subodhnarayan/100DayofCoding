@@ -17,6 +17,9 @@ Given an array derived, your task is to determine whether there exists a valid b
 Return true if such an array exists or false otherwise.
 
 A binary array is an array containing only 0's and 1's
+
+
+Time Complexity: O(n)Auxiliary Space: O(1)
  
 
 Example 1:
