@@ -150,3 +150,15 @@ Constraints:
 n == derived.length
 1 <= n <= 105
 The values in derived are either 0's or 1's
+
+class Solution {
+public:
+    bool doesValidArrayExist(vector<int>& derived) {
+        int res=0;
+        int n=derived.size();
+        for(int i=0;i<n;i++){
+            res=res^derived[i];
+        }
+        return res==0;
+    }
+};
