@@ -23,4 +23,16 @@ Constraints:
 
 Time Complexity: O(n)Auxiliary Space: O(1)
 
+
+class Solution {
+  public:
+    Node* reverseList(struct Node* head) {
+        Node * prev=NULL;
+        Node* curr=head;
+        while(curr->next!=NULL){
+            
+        }
+    }
+};
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 18 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
