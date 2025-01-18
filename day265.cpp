@@ -21,4 +21,6 @@ Explanation:
 Constraints:
 1 <= number of nodes, data of nodes <= 105
 
+Time Complexity: O(n)Auxiliary Space: O(1)
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 18 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
