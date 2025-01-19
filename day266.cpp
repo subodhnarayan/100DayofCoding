@@ -22,6 +22,8 @@ Constraints:
 0 <= k <= 109
 0 <= data of node <= 109
 
+Time Complexity: O(n)Auxiliary Space: O(1)
+
 
 class Solution {
   public:
