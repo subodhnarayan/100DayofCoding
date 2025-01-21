@@ -20,4 +20,48 @@ Constraints:
 1 <= k <= size of linked list 
 
 
+class Solution {
+  public:
+    Node *reverseKGroup(Node *head, int k) {
+        stack<int> st;
+        Node* an=new Node(0);
+        Node* re=an;
+        
+        int len=0;
+        Node* temp=head;
+        while(temp!=NULL){
+            len++;
+            temp=temp->next;
+        }
+        int rem=len/k;
+        temp=head;
+        for(int i=0;i<rem;i++){
+            for(int j=0;j<k;j++){
+                st.push(temp->data);
+                temp=temp->next;
+            }
+            for(int j=0;j<k;j++){
+                re->next=new Node(st.top());
+                re=re->next;
+                st.pop();
+            }
+        }
+        
+        while(temp!=NULL){
+            st.push(temp->data);
+            temp=temp->next;
+        }
+        
+        while(!st.empty()){
+            re->next=new Node(st.top());
+                re=re->next;
+                st.pop();
+        }
+        
+        return an->next;
+        
+    }
+};
+
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 22 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
