@@ -23,6 +23,67 @@ Constraints:
 0 <= elements of both linked lists <= 9
 
 
+Node* reverse(Node* head){
+        Node* prev=NULL;
+        Node* curr=head;
+        Node* temp;
+        while(curr!=NULL){
+            temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
+        }
+        return prev;
+    }
+
+class Solution {
+  public:
+    Node* addTwoLists(Node* num1, Node* num2) {
+        // code here
+          Node* first=reverse(num1);
+        Node* sec=reverse(num2);
+        Node * temp=new Node(0);
+        Node* res=temp;
+        int carry=0;
+        while(first!=NULL && sec!=NULL){
+            int sum=first->data+sec->data+carry;
+            carry = sum/10;
+            sum = sum%10;
+            res->next = new Node(sum);
+            res=res->next;
+            first=first->next;
+            sec=sec->next;
+        }
+        
+        while(first!=NULL){
+            int sum=first->data+carry;
+            carry = sum/10;
+            sum = sum%10;
+            res->next = new Node(sum);
+            res=res->next;
+            first=first->next;
+        }
+         while(sec!=NULL){
+            int sum=sec->data+carry;
+            carry = sum/10;
+            sum = sum%10;
+            res->next = new Node(sum);
+            res=res->next;
+            sec=sec->next;
+        }
+        if(carry != 0){
+            res->next = new Node(carry);
+            res=res->next;
+        }
+        Node* final = reverse(temp->next);
+        while(final->data == 0){
+            final= final->next;
+        }
+        return final;
+    }
+};
+
+
 
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 21 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
