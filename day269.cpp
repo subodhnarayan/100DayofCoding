@@ -23,6 +23,9 @@ Constraints:
 0 <= elements of both linked lists <= 9
 
 
+Time Complexity: O(n + m)Auxiliary Space: O(max(n, m))
+
+
 Node* reverse(Node* head){
         Node* prev=NULL;
         Node* curr=head;
