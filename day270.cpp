@@ -40,6 +40,43 @@ Constraints:
 0 <= node->data <= 1000
 
 
+class Solution {
+  public:
+    Node *cloneLinkedList(Node *head) {
+        // Write your code here
+          Node* curr=head;
+          //ading the cpoy of the each node
+        while(curr){
+           Node* clone=new Node(curr->data);
+           clone->next=curr->next;
+           curr->next=clone;
+           curr=clone->next;
+        }
+        
+        //
+        curr=head;
+        while(curr){
+        if(curr->random){
+            curr->next->random=curr->random->next;
+        }
+        curr=curr->next->next;
+        }
+        
+        
+        Node* Clone=new Node(0),*ans=Clone;
+        curr=head;
+        while(curr){
+            Clone->next=curr->next;
+            Clone=Clone->next;
+            curr->next=Clone->next;
+            curr=curr->next;
+        }
+        
+        return ans->next;
+    }
+};
+
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 23 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
