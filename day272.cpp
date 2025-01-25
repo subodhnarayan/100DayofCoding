@@ -21,6 +21,8 @@ Constraints:
 1 <= no. of nodes <= 106
 1 <= node->data <= 106 
 
+Time Complexity: O(n)Auxiliary Space: O(1)
+
 
 
 
