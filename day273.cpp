@@ -31,6 +31,59 @@ A loop is present in the list, and it is removed.
 Constraints:
 1 ≤ size of linked list ≤ 105
 
+
+class Solution {
+  public:
+    // Function to remove a loop in the linked list.
+    void removeLoop(Node* head) {
+        // code here
+        // set<Node*> st;
+        // Node* curr=head;
+        // while(curr!=NULL){
+        //     if(st.find(curr->next)!=st.end()){
+        //       curr->next=NULL;
+        //       return;
+        //     }
+        //     st.insert(curr);
+        //   curr=curr->next;
+           
+        // }
+        
+        //this code has TC=0(n) and sc=0(n)
+        
+        
+       
+        Node* fast=head;
+        Node* slow=head;
+        
+        while(fast!=NULL && fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+            
+            if(slow==fast){
+                break;
+            }
+            
+        }
+        
+        if(fast==NULL || fast->next==NULL) return;
+        
+        
+        slow=head;
+        while(fast!=slow){
+            slow=slow->next;
+            fast=fast->next;
+        }
+        
+        while(fast->next!=slow){
+            fast=fast->next;
+        }
+        
+        fast->next=NULL;
+        
+    }
+};
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 26 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
