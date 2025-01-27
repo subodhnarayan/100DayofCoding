@@ -36,6 +36,62 @@ Constraints:
 1 <= x, y <= 104
 
 
+class LRUCache {
+    struct Node {
+        int key, val;
+        Node *prev, *next;
+        Node(int k, int v) : key(k), val(v), prev(nullptr), next(nullptr) {}
+    };
+
+    int capacity;
+    unordered_map<int, Node*> cache; // Key to Node mapping
+    Node *head, *tail;              // Pointers to LRU (head) and MRU (tail)
+
+    void removeNode(Node *node) {
+        if (node->prev) node->prev->next = node->next;
+        else head = node->next; // If node is head
+
+        if (node->next) node->next->prev = node->prev;
+        else tail = node->prev; // If node is tail
+    }
+
+    void addToTail(Node *node) {
+        node->prev = tail;
+        node->next = nullptr;
+        if (tail) tail->next = node;
+        tail = node;
+        if (!head) head = node; // If list was empty
+    }
+
+public:
+    LRUCache(int cap) : capacity(cap), head(nullptr), tail(nullptr) {}
+
+    int get(int key) {
+        if (cache.find(key) == cache.end()) return -1; // Key not found
+        Node *node = cache[key];
+        removeNode(node); // Move accessed node to tail
+        addToTail(node);
+        return node->val;
+    }
+
+    void put(int key, int value) {
+        if (cache.find(key) != cache.end()) {
+            Node *node = cache[key];
+            node->val = value; // Update value
+            removeNode(node); // Move updated node to tail
+            addToTail(node);
+        } else {
+            if (cache.size() == capacity) { // If at capacity, remove LRU
+                cache.erase(head->key);
+                removeNode(head);
+            }
+            Node *newNode = new Node(key, value);
+            cache[key] = newNode;
+            addToTail(newNode);
+        }
+    }
+};
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 27 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
