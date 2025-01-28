@@ -20,6 +20,8 @@ Constraints:
 s contains only Uppercase english alphabets
 
 
+Time Complexity: O(n! * n)Auxiliary Space: O(n)
+
 //{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
