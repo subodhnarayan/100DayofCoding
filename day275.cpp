@@ -20,6 +20,72 @@ Constraints:
 s contains only Uppercase english alphabets
 
 
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution {
+  public:
+  void getallperm(int ind,string &s,vector<string> &ans,unordered_set<string> &seen){
+	          if (ind == s.size()) {
+        if (seen.find(s) == seen.end()) {
+            ans.push_back(s);
+            seen.insert(s);
+        }
+        return;
+    }
+	 for (int i = ind; i < s.size(); i++) {
+        // Ensure we don't swap duplicate characters in the same position
+        bool shouldSwap = true;
+        for (int j = ind; j < i; j++) {
+            if (s[j] == s[i]) {
+                shouldSwap = false;
+                break;
+            }
+        }
+        if (!shouldSwap) continue;
+
+        std::swap(s[ind], s[i]);
+        getallperm(ind + 1, s, ans, seen);
+        std::swap(s[ind], s[i]); // Backtrack to original string
+    }
+	    }
+    vector<string> findPermutation(string &S) {
+         sort(S.begin(), S.end());
+		    vector<string> ans;
+		    unordered_set<std::string> seen;
+		    getallperm(0,S,ans,seen);
+		    return ans;
+    }
+};
+
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string S;
+        cin >> S;
+        Solution ob;
+        vector<string> ans = ob.findPermutation(S);
+        sort(ans.begin(), ans.end());
+        for (auto i : ans) {
+            cout << i << " ";
+        }
+        cout << "\n";
+
+        cout << "~"
+             << "\n";
+    }
+    return 0;
+}
+
+// } Driver Code Ends
+
+
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 28 / 01 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
