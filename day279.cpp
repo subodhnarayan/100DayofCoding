@@ -26,6 +26,8 @@ Constraints:
 1 ≤ L ≤ 15
 mat and word consists of only lowercase and uppercase English letters.
 
+Time Complexity: O(n * m * 3^L)Auxiliary Space: O(n * m)
+
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 01 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
