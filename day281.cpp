@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -GFG - POTD - 02 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
+-- -- -- -- -- -- -- -- -GFG - POTD - 03 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
 Height of Binary Tree
 Difficulty: EasyAccuracy: 78.58%Submissions: 306K+Points: 2Average Time: 15m
@@ -20,6 +20,6 @@ Constraints:
 1 <= number of nodes <= 105
 0 <= node->data <= 105
 
--- -- -- -- -- -- -- -- -LeetCode - POTD - 02 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -LeetCode - POTD - 03 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
