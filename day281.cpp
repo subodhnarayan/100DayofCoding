@@ -20,6 +20,20 @@ Constraints:
 1 <= number of nodes <= 105
 0 <= node->data <= 105
 
+class Solution {
+  public:
+    // Function to find the height of a binary tree.
+    
+    int height(Node* node) {
+        
+        if(node==NULL) return -1;
+        int left=0,right=0;
+        if(node->left!=NULL) left=1+height(node->left);
+        if(node->right!=NULL) right=1+height(node->right);
+        return max(left,right);
+    }
+};
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 03 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
