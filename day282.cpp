@@ -20,4 +20,21 @@ Constraints:
 1 ≤ number of nodes ≤ 105
 0 ≤ node->data ≤ 105
 
+
+class Solution {
+  public:
+       int dfs(Node* root, int& d) {
+        if (!root) return 0;
+        int l = dfs(root->left, d), r = dfs(root->right, d);
+        d = std::max(d, l + r + 1);
+        return 1 + std::max(l, r);
+    }
+    int diameter(Node* root) {
+        // Your code here
+          int d = 0;
+        dfs(root, d);
+        return d-1;
+    }
+};
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 04 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
