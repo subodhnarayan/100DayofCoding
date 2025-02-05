@@ -23,6 +23,17 @@ Constraints:
 1 ≤ node->data ≤ 105
 
 
+class Solution {
+  public:
+    // Function to convert a binary tree into its mirror tree.
+    void mirror(Node* node) {
+        // code here
+        if(!node) return;
+        swap(node->left, node->right);
+        mirror(node->left);
+        mirror(node->right);
+    }
+};
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 04 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
