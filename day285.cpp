@@ -23,6 +23,24 @@ Constraints:
 1 <= number of nodes <= 105
 0 <= node->data <= 105
 
+class Solution {
+  public:
+    void InOrder(Node* root,vector<int> &ans){
+        if(root==NULL){
+            return;
+        }
+        InOrder(root->left,ans);
+        ans.push_back(root->data);
+        InOrder(root->right,ans);
+    }
+    // Function to return a list containing the inorder traversal of the tree.
+    vector<int> inOrder(Node* root) {
+        vector<int> ans;
+        InOrder(root,ans);
+        return ans;
+    }
+};
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 06 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 3160. Find the Number of Distinct Colors Among the Balls
