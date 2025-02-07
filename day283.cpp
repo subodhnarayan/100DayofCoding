@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -GFG - POTD - 04 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
+-- -- -- -- -- -- -- -- -GFG - POTD - 05 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
 Mirror Tree
 Difficulty: EasyAccuracy: 72.67%Submissions: 221K+Points: 2Average Time: 20m
@@ -35,7 +35,7 @@ class Solution {
     }
 };
 
--- -- -- -- -- -- -- -- -LeetCode - POTD - 04 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+-- -- -- -- -- -- -- -- -LeetCode - POTD - 05 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 1790. Check if One String Swap Can Make Strings Equal
 Solved
