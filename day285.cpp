@@ -1,5 +1,9 @@
 -- -- -- -- -- -- -- -- -GFG - POTD - 06 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
+
+
+-- -- -- -- -- -- -- -- -LeetCode - POTD - 06 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
 3160. Find the Number of Distinct Colors Among the Balls
 Solved
 Medium
@@ -54,6 +58,3 @@ Constraints:
 queries[i].length == 2
 0 <= queries[i][0] <= limit
 1 <= queries[i][1] <= 109
-
--- -- -- -- -- -- -- -- -LeetCode - POTD - 06 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
-
