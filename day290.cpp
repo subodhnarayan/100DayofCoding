@@ -95,3 +95,19 @@ Constraints:
 1 <= s.length <= 100
 s consists only of lowercase English letters and digits.
 The input is generated such that it is possible to delete all digits.
+
+
+class Solution {
+    public:
+        string clearDigits(string s) {
+            string stack;
+            for (char c : s) {
+                if (isdigit(c)) {
+                    if (!stack.empty()) stack.pop_back();
+                } else {
+                    stack.push_back(c);
+                }
+            }
+            return stack;
+        }
+    };
