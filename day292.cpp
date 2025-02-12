@@ -23,5 +23,50 @@ Constraints:
 1 <= number of nodes, k <= 105
 1 <= node->data <= 105
 
+class Solution {
+    public:
+      // Return the Kth smallest element in the given BST
+      void inorder(Node* root,vector<int> &ans){
+          if(root==NULL) return;
+          inorder(root->left,ans);
+          ans.push_back(root->data);
+          inorder(root->right,ans);
+          return;
+      }
+      
+      int kthMinEle = -1;
+      void solve(Node *root, int& k){
+          if(root == NULL){
+              return;
+          }
+           
+          if(k == 0){
+              return;
+          }
+          
+          solve(root->left, k);
+         
+          if(root->data > kthMinEle && k > 0){
+              kthMinEle = root->data;
+              --k;
+          }
+          
+          solve(root->right, k);
+          return;
+      }
+      
+      int kthSmallest(Node *root, int k) {
+          // vector<int> ans;
+          // inorder(root,ans);
+          // if(k>ans.size()) return -1;
+          // return ans[k-1];
+          solve(root, k);
+          if(k > 0){
+              return -1;
+          }
+          return kthMinEle;
+      }
+  };
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 12 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
