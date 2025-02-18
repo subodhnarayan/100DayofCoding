@@ -33,5 +33,7 @@ Constraints:
 -104 <= xi, yi <= 104
 
 
+Time Complexity: O (N log K)Auxiliary Space: O (K)
+
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 18 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
