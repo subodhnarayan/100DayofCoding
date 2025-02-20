@@ -32,7 +32,7 @@ Constraints:
 1 <= x <= 10
 
 
-
+Time Complexity: O(n log n)Auxiliary Space: O(n)
 
 
 class Solution {
