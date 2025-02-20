@@ -34,6 +34,58 @@ Constraints:
 
 
 
+
+class Solution {
+    public:
+      vector<double> getMedian(vector<int> &arr) {
+          // vector<double> ans;
+          // vector<int> res;
+          // for(int i=0;i<arr.size();i++){
+          //     res.push_back(arr[i]);
+          //     int n=res.size();
+          //     sort(res.begin(),res.end());
+          //     if(n%2==1){
+          //         ans.push_back(res[(n/2)]/1.0);
+          //     }
+          //     else{
+          //         ans.push_back((res[(n/2)-1]+res[n/2])/2.0);
+          //     }
+          // }
+          
+          // return ans;
+          
+      vector<double> ans;
+      priority_queue<int> leftMaxHeap;  // Max-heap for left half
+      priority_queue<int, vector<int>, greater<int>> rightMinHeap; // Min-heap for right half
+  
+      for (int num : arr) {
+          if (leftMaxHeap.empty() || num <= leftMaxHeap.top()) {
+              leftMaxHeap.push(num);
+          } else {
+              rightMinHeap.push(num);
+          }
+  
+          // Balance the heaps
+          if (leftMaxHeap.size() > rightMinHeap.size() + 1) {
+              rightMinHeap.push(leftMaxHeap.top());
+              leftMaxHeap.pop();
+          } else if (rightMinHeap.size() > leftMaxHeap.size()) {
+              leftMaxHeap.push(rightMinHeap.top());
+              rightMinHeap.pop();
+          }
+  
+          // Find median
+          if (leftMaxHeap.size() > rightMinHeap.size()) {
+              ans.push_back(leftMaxHeap.top());
+          } else {
+              ans.push_back((leftMaxHeap.top() + rightMinHeap.top()) / 2.0);
+          }
+      }
+  
+      return ans;
+      }
+  };
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 19 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
