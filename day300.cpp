@@ -123,3 +123,19 @@ n == nums.length
 nums[i].length == n
 nums[i] is either '0' or '1'.
 All the strings of nums are unique.
+
+class Solution {
+    public:
+        string findDifferentBinaryString(vector<string>& nums) {
+            string res;
+            for(int i=0;i<nums.size();i++){
+                if(nums[i][i]=='0'){
+                    res+='1';
+                }
+                else{
+                    res+='0';
+                }
+            }
+            return res;
+        }
+};
