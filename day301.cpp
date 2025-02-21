@@ -124,3 +124,29 @@ The height of the binary tree is less than or equal to 20
 The total number of nodes is between [1, 104]
 Total calls of find() is between [1, 104]
 0 <= target <= 106
+
+class FindElements {
+    unordered_set<int> recoveredValues;
+
+    void recoverTree(TreeNode* root) {
+        if (!root) return;
+        recoveredValues.insert(root->val);
+        if (root->left) {
+            root->left->val = 2 * root->val + 1;
+            recoverTree(root->left);
+        }
+        if (root->right) {
+            root->right->val = 2 * root->val + 2;
+            recoverTree(root->right);
+        }
+    }
+public:
+    FindElements(TreeNode* root) {
+        root->val = 0;
+        recoverTree(root);
+    }
+    
+    bool find(int target) {
+        return recoveredValues.count(target);
+    }
+};
