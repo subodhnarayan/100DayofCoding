@@ -27,6 +27,8 @@ Constraints:
 s[i] ∈ {'{', '}', '(', ')', '[', ']'}
 
 
+Time Complexity: O(n)Auxiliary Space: O(n)
+
 class Solution {
     public:
       bool isBalanced(string& s) {
