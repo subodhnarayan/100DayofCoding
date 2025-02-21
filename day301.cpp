@@ -27,5 +27,30 @@ Constraints:
 s[i] ∈ {'{', '}', '(', ')', '[', ']'}
 
 
+class Solution {
+    public:
+      bool isBalanced(string& s) {
+          stack<char> st;
+          for(char c: s){
+              if(st.empty() || c=='(' || c=='{' ||  c=='['){
+                  st.push(c);
+              }
+              else{
+                  if(st.empty()) return false;
+                  if((c==')' && st.top()=='(') ||
+                          (c=='}' && st.top()=='{') ||
+                          (c==']' && st.top()=='[') )
+                          {
+                              st.pop();
+                          }
+                  else{
+                      return false;
+                  }
+              }
+          }
+          return st.empty()?true:false;
+      }
+  };
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 20 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
