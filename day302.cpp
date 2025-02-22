@@ -23,7 +23,7 @@ Constraints:
 1 ≤ s.size() ≤ 106  
 s consists of '(' and ')' only
 
-
+Time Complexity: O(n)Auxiliary Space: O(n)
 
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 21 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
