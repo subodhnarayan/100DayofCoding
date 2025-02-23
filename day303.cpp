@@ -51,6 +51,8 @@ class Solution {
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 23 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
+
+
 889. Construct Binary Tree from Preorder and Postorder Traversal
 Solved
 Medium
@@ -82,3 +84,28 @@ postorder.length == preorder.length
 1 <= postorder[i] <= postorder.length
 All the values of postorder are unique.
 It is guaranteed that preorder and postorder are the preorder traversal and postorder traversal of the same binary tree.
+
+
+class Solution {
+public:
+    unordered_map<int,int> mp;
+    TreeNode* recur(int i1,int i2,int j1,int j2, vector<int>&preorder,vector<int> &postorder){
+        if(i1>i2 || j1>j2){
+            return NULL;
+        }
+        TreeNode* root=new TreeNode(preorder[i1]);
+        if(i1==i2) return root;
+        int r=mp[preorder[i1+1]];
+        int size=r-j1+1;
+        root->left=recur(i1+1,i1+size,j1,r,preorder,postorder);
+        root->right=recur(i1+size+1,i2,r+1,j2-1,preorder,postorder);
+        return root;
+    }
+    TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
+        int n=preorder.size();
+        for(int i=0;i<n;i++){
+            mp.insert({postorder[i],i});
+        }
+        return recur(0,n-1,0,n-1,preorder,postorder);
+    }
+};
