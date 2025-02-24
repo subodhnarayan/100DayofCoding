@@ -16,6 +16,8 @@ Constraints:
 1 ≤ arr.size()≤ 105
 1 ≤ arr[i] ≤ 105
 
+Time Complexity: O(n)Auxiliary Space: O(n)
+
 
 class Solution {
     public:
