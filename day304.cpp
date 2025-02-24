@@ -16,6 +16,45 @@ Constraints:
 1 ≤ arr.size()≤ 105
 1 ≤ arr[i] ≤ 105
 
+
+class Solution {
+    public:
+      vector<int> calculateSpan(vector<int>& arr) {
+          // write code here
+          // int n=arr.size();
+          // vector<int> ans(n);
+          // ans[0]=1;
+          // for(int i=1;i<arr.size();i++){
+          //     int count=1;
+          //     for(int j=i-1;j>=0 && arr[j]<=arr[i];j--){
+          //             count++;
+          //     }
+          //     ans[i]=count;
+          // }
+          // return ans;
+          
+      int n=arr.size();
+      vector<int> ans(n);
+      stack<int> st;
+      st.push(0);
+      ans[0]=1;
+      for(int i=1;i<n;i++){
+          //this will pop all the smaller element than current ele
+          while(!st.empty() && arr[st.top()]<=arr[i]){
+              st.pop();
+      }
+      //this is imp step here it all the element in stack is  pushed
+      // means all the elements are smaller in previous so i+1 //pushed and if element is left means then top()-1 is done 
+      // to find the how many element is less than and smaller than
+      ans[i]=(st.empty())?(i+1):(i-st.top());
+      st.push(i);
+  }
+  return ans;
+          
+      }
+  };
+
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 24 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 
