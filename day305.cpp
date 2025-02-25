@@ -22,6 +22,60 @@ Constraints:
 1 ≤ arr.size() ≤ 105
 0 ≤ arr[i] ≤ 104
 
+class Solution {
+    public:
+    
+    vector<int> prevSmall(vector<int> arr){
+        int n=arr.size();
+        vector<int> res(n);
+        stack<int> st;
+        st.push(-1);
+        for(int i=0;i<n;i++){
+            while(st.top()!=-1 && arr[st.top()]>=arr[i]){
+                st.pop();
+            }
+            res[i]=st.top();
+            st.push(i);
+        }
+        return res;
+    }
+    
+    vector<int> nextSmall(vector<int> arr){
+        int n=arr.size();
+        vector<int> res(n);
+        stack<int> st;
+        st.push(-1);
+        for(int i=n-1;i>=0;i--){
+            while(st.top()!=-1 && arr[st.top()]>=arr[i]){
+                st.pop();
+            }
+            res[i]=st.top();
+            st.push(i);
+        }
+        return res;
+    }
+    
+    
+      int getMaxArea(vector<int> &arr) {
+          vector<int> next=nextSmall(arr);
+          vector<int> prev=prevSmall(arr);
+          int n=arr.size();
+          int maxArea=0;
+          for(int i=0;i<n;i++){
+              int length=arr[i];
+              if(next[i]==-1){
+                  next[i]=n;
+              }
+              
+            int width=next[i]-prev[i]-1;
+            int area=(int)(length*width);
+            maxArea=max(maxArea,area);
+          }
+          
+          return maxArea;
+      }
+  };
+
 
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 25 / 02 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
