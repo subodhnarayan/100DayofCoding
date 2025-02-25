@@ -117,3 +117,19 @@ Constraints:
 
 1 <= arr.length <= 105
 1 <= arr[i] <= 100
+
+class Solution {
+    public:
+        int numOfSubarrays(vector<int>& arr) {
+            long long count=0,presum=0;
+            int n=arr.size();
+            int mod=1e9+7;
+            for(int i=0;i<n;i++){
+                 presum+=arr[i];
+                 count+=presum%2;
+            }
+    
+            count+=(n-count)*count;
+            return count%mod;
+        }
+    };
