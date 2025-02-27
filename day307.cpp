@@ -43,3 +43,58 @@ Constraints:
 1 <= q <= 105
 0 <= values on the stack <= 109
 
+Time Complexity: O(1)Auxiliary Space: O(1)
+
+
+class Solution {
+    public:
+     
+     stack<long long> st;
+      long long m; // Stores the minimum value
+      Solution() {
+         m = INT_MAX;
+      }
+      // Add an element to the top of Stack
+      void push(int x) {
+         if (st.empty()) {
+              m = x;
+              st.push(0);  // Push 0 to indicate it's the first element
+          } else {
+              long long y = (long long)x - m; // Prevent overflow
+              st.push(y);
+              if (y < 0) {
+                  m = x;  // Update min if needed
+              }
+          }
+          
+      }
+  
+      // Remove the top element from the Stack
+      void pop() {
+           if (st.empty()) return;
+          
+          long long y = st.top();
+          st.pop();
+  
+          if (y < 0) {
+              m = m - y; // Restore previous min
+          }
+             
+  
+      }
+  
+      // Returns top element of the Stack
+      int peek() {
+           if (st.empty()) return -1;
+  
+          long long y = st.top();
+          return (y < 0) ? m : (m + y);
+          
+      }
+  
+      // Finds minimum element of Stack
+      int getMin() {
+          if (st.empty()) return -1;
+          return m;
+      }
+  };
