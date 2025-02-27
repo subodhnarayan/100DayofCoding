@@ -135,3 +135,35 @@ Constraints:
 
 3 <= arr.length <= 1000
 1 <= arr[i] < arr[i + 1] <= 109
+
+
+
+
+class Solution {
+    public:
+        int lenLongestFibSubseq(vector<int>& arr) {
+             int n = arr.size();
+            unordered_map<int, int> index_map;  // Maps value -> index
+            vector<vector<int>> dp(n, vector<int>(n, 2));  // Initialize DP table with minimum length 2
+            int max_len = 0;
+    
+            // Step 1: Build index map for quick lookup
+            for (int i = 0; i < n; i++) {
+                index_map[arr[i]] = i;
+            }
+    
+            // Step 2: Iterate through all pairs (j, i) where j < i
+            for (int i = 1; i < n; i++) {
+                for (int j = 0; j < i; j++) {
+                    int k = index_map.count(arr[i] - arr[j]) ? index_map[arr[i] - arr[j]] : -1;
+                    
+                    if (k >= 0 && k < j) {  // Ensure k < j < i
+                        dp[j][i] = dp[k][j] + 1;
+                        max_len = max(max_len, dp[j][i]);
+                    }
+                }
+            }
+    
+            return (max_len > 2) ? max_len : 0;  // Return 0 if no valid sequence exists
+        }
+    };
