@@ -25,4 +25,41 @@ s contains only lowercase english alphabets
 
 Time Complexity: O(n)Auxiliary Space: O(n)
 
+
+class Solution {
+    public:
+      string decodedString(string &s) {
+          // code here
+          stack<char>st;
+          string ans="";
+         for(auto &it:s){
+             if(it==']'){
+                 string str="";
+                while(!st.empty() && st.top()!='['){
+                    str=st.top()+str;
+                    st.pop();
+                }
+                st.pop();
+                int num=0,mt=1;
+                while(!st.empty() && isdigit(st.top())){
+                     num=(st.top()-'0')*mt+num;
+                     mt*=10;
+                     st.pop();
+                }
+              //   cout<<str<<" "<<num<<endl;
+                while(num--){
+                    for(auto &ch:str) st.push(ch);
+                }
+             }
+             else st.push(it);
+         }
+         while(!st.empty()) {
+             ans+=st.top();
+             st.pop();
+         }
+         reverse(ans.begin(),ans.end());
+          return ans;
+      }
+  };
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 01 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
