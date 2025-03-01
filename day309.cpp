@@ -23,6 +23,6 @@ Constraints:
 1 <= k <= 100
 s contains only lowercase english alphabets
 
-
+Time Complexity: O(n)Auxiliary Space: O(n)
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 01 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
