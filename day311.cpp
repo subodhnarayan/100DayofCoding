@@ -18,5 +18,9 @@ Constraints:
 1 <= arr[i] <= 109
 0 <= x<= 109
 
+Time Complexity: O(n)Auxiliary Space: O(n)
+
+
+
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 03 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
