@@ -21,6 +21,41 @@ Constraints:
 Time Complexity: O(n)Auxiliary Space: O(n)
 
 
+class Solution {
+    public:
+      vector<int> longestSubarray(vector<int>& arr, int x) {
+          // code here
+          int n=arr.size();
+          deque<int> mn,mx;
+          int en=0,st=0;
+          int i=0,j=0;
+          
+          while(j<n){
+              while(!mn.empty() && mn.back()>arr[j]) mn.pop_back();
+              while(!mx.empty() && mx.back()<arr[j]) mx.pop_back();
+              mn.push_back(arr[j]);
+              mx.push_back(arr[j]);
+              
+              if(mx.front()-mn.front()<=x){
+                  if((en-st)<(j-i)) {
+                      en=j;
+                      st=i;
+                  }
+                  j++;
+              } else{ //mx.front()-mn.front()>x
+                  if(arr[i]==mx.front()) mx.pop_front();
+                  if(arr[i]==mn.front()) mn.pop_front();
+                  i++;
+                  j++;
+              }
+          }
+          
+          if(en==st) return {arr[0]}; //If multiple such subarrays exist, return the one that starts at the smallest inde
+          vector<int> res;
+          for(int i=st;i<=en;i++) res.push_back(arr[i]);
+          return res;
+      }
+};
 
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 03 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
