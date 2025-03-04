@@ -21,5 +21,7 @@ Constraints:
 1 ≤ arr.size() ≤ 103
 0 ≤ arr[i] ≤ 106
 
+Time Complexity: O(n log n)Auxiliary Space: O(n)
+
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 04 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
