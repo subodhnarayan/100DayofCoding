@@ -25,6 +25,7 @@ Constraint:
 1 <= words[i].length <= 10
  words[i] only consists of lowercase English letters.
 
+ Time Complexity: O(nlogn + n*m²)Auxiliary Space: O(n * m)
 
  class Solution {
     public:
