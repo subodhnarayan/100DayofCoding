@@ -17,6 +17,8 @@ Explanation: There are five ways to reach 4th stair: {1, 1, 1, 1}, {1, 1, 2}, {2
 Constraints:
 1 ≤ n ≤ 44
 
+Time Complexity: O(n)Auxiliary Space: O(1)
+
 
 class Solution {
   public:
