@@ -1,5 +1,5 @@
 -- -- -- -- -- -- -- -- -GFG - POTD - 11 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
-Ways to Reach the n'th Stair
+Ways to Reach the n'2th Stair
 Difficulty: MediumAccuracy: 21.9%Submissions: 219K+Points: 4
 There are n stairs, a person standing at the bottom wants to reach the top. The person can climb either 1 stair or 2 stairs at a time. Your task is to count the number of ways, the person can reach the top (order does matter).
 
