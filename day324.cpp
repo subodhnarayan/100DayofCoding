@@ -11,6 +11,7 @@ If arr[i] = 0, you cannot jump forward from that position.
 Your task is to find the minimum number of jumps needed to move from the first position in the array to the last position.
 
 Note:  Return -1 if you can't reach the end of the array.
+Time Complexity: O(n)Auxiliary Space: O(1)
 
 Examples : 
 
