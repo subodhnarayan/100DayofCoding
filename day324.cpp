@@ -26,6 +26,32 @@ Explanation: We cannot go anywhere from the 1st element.
 Constraints:
 2 ≤ arr.size() ≤ 104
 0 ≤ arr[i] ≤ 104
+
+class Solution {
+  public:
+    int minJumps(vector<int>& arr) {
+        // code here
+        if(arr[0]==0) return -1;
+        int mx=0;
+        int jump=arr[0];
+        int n=arr.size();
+        int ans=1;
+        for(int i=1;i<n;i++){
+            mx--;
+            jump--;
+            mx=max(mx,arr[i]);
+            if(!jump and i!=n-1){
+                if(mx<=0) return -1;
+                jump=mx;
+                mx=0;
+                ans++;
+            }
+        }
+        return ans;
+    }
+};
+
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 16 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
 
