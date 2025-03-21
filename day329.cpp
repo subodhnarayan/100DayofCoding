@@ -21,7 +21,7 @@ Constraints:
 1 ≤ arr.size() ≤ 105
 1 ≤ arr[i] ≤ 104
 
-
+Time Complexity: O(n)Auxiliary Space: O(1)
 
 
 
