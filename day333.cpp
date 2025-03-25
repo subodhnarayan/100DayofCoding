@@ -24,7 +24,7 @@ Explaination: The expression evaluates to true in 2 ways: ((T^F)|F) and (T^(F|F)
 Constraints:
 1 ≤ |s| ≤ 100 
 
-
+Time Complexity: O(n^3)Auxiliary Space: O(n^2)
 
 class Solution {
     public:
