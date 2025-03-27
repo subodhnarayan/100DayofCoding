@@ -23,6 +23,30 @@ Constraints:
 Note: Time intervals are in the 24-hour format(HHMM) , where the first two characters represent hour (between 00 to 23 ) and the last two characters represent minutes (this will be <= 59 and >= 0).
 
 
+class Solution {
+    public:
+      // Function to find the minimum number of platforms required at the
+      // railway station such that no train waits.
+      int findPlatform(vector<int>& arr, vector<int>& dep) {
+          // Your code here
+          int n = arr.size();
+          vector<int> time(2361, 0);
+          for(int i = 0; i < n; i++){ 
+             time[arr[i]]+=1;
+             time[dep[i]+1]-=1;
+          }
+          
+          int maxCnt = 0, cntsum = 0;
+          for(int i = 0; i < 2361; i++){
+              cntsum += time[i];
+              maxCnt = max(maxCnt, cntsum);
+          }
+          
+          return maxCnt; 
+      }
+  };
+  
+
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 27 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
