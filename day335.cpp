@@ -22,6 +22,8 @@ Constraints:
 0000 ≤ arr[i] ≤ dep[i] ≤ 2359
 Note: Time intervals are in the 24-hour format(HHMM) , where the first two characters represent hour (between 00 to 23 ) and the last two characters represent minutes (this will be <= 59 and >= 0).
 
+Expected Complexities
+Time Complexity: O(n log n)Auxiliary Space: O(n)
 
 class Solution {
     public:
