@@ -19,6 +19,8 @@ Constraints:
 1 ≤ start.size() = finish.size() ≤ 2*105
 1 ≤ start[i] ≤ finish[i] ≤ 109
 
+Time Complexity: O(n log n)Auxiliary Space: O(n)
+
 class Solution {
     public:
       int activitySelection(vector<int> &start, vector<int> &finish) {
