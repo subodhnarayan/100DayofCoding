@@ -29,7 +29,31 @@ Constraints:
 1 ≤ gas.size(), cost.size() ≤ 106
 1 ≤ gas[i], cost[i] ≤ 103
 
-
+ int startStation(vector<int> &gas, vector<int> &cost) {
+        // Your code here
+         int n = gas.size();
+        int totalGas = 0, totalCost = 0;
+        
+        // Step 1: Check if total gas is enough to cover total cost
+        for(int i = 0; i < n; ++i) {
+            totalGas += gas[i];
+            totalCost += cost[i];
+        }
+        if(totalCost > totalGas) return -1; // Not possible to complete the circuit
+        
+        int total = 0, ans = 0;
+        
+        // Step 2: Find the optimal starting station
+        for(int i = 0; i < n; ++i) {
+            total += (gas[i] - cost[i]); // Update current gas balance
+            if(total < 0) { // If deficit, reset and try next station
+                ans = (i + 1) % n; // Next station is the new candidate
+                total = 0; // Reset gas balance
+            }
+        }
+        
+        return ans; // The correct starting index
+}
 
 
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 29 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
