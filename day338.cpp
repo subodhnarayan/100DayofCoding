@@ -29,6 +29,8 @@ Constraints:
 1 ≤ gas.size(), cost.size() ≤ 106
 1 ≤ gas[i], cost[i] ≤ 103
 
+Time Complexity: O(n)Auxiliary Space: O(1)
+
  int startStation(vector<int> &gas, vector<int> &cost) {
         // Your code here
          int n = gas.size();
