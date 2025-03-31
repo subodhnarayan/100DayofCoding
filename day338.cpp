@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -GFG - POTD - 29 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
+-- -- -- -- -- -- -- -- -GFG - POTD - 30 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
 Gas Station
 Difficulty: MediumAccuracy: 34.79%Submissions: 193K+Points: 4Average Time: 20m
@@ -58,7 +58,7 @@ Time Complexity: O(n)Auxiliary Space: O(1)
 }
 
 
--- -- -- -- -- -- -- -- -LeetCode - POTD - 29 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
+-- -- -- -- -- -- -- -- -LeetCode - POTD - 30 / 03 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
 
 763. Partition Labels
