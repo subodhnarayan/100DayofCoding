@@ -31,5 +31,33 @@ Constraints:
 1 ≤ adj[i][j] ≤ 104
 
 
+class Solution {
+  public:
+    // Function to return Breadth First Traversal of given graph.
+  
+    vector<int> bfs(vector<vector<int>> &adj) {
+        // Code here
+        int n=adj.size();
+        vector<int> vis(n,0);
+        vector<int> ans;
+        queue<int> qu;
+        qu.push(0);
+        vis[0]=1;
+        while(!qu.empty()){
+            int temp=qu.front();
+            qu.pop();
+            ans.push_back(temp);
+            for(auto it:adj[temp]){
+                if(vis[it]!=1){
+                    qu.push(it);
+                    vis[it]=1;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+
 -- -- -- -- -- -- -- -- -LeetCode - POTD - 02 / 04 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
