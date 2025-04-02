@@ -98,3 +98,28 @@ Constraints:
 
 3 <= nums.length <= 100
 1 <= nums[i] <= 106
+
+
+class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+       // nums.sort(nums.begin(),nums.end());
+    //    long ans=0;
+    //    int n=nums.size();
+    //    for(int i=0;i<n-2;i++){
+    //     for(int j=i+1;j<n-1;j++){
+    //         for(int k=j+1;k<n;k++){
+    //            ans=max(ans,long((nums[i]-nums[j])*nums[k]));
+    //         }
+    //     }
+    //    }
+    //    return ans;
+     long maxTriplet = 0, maxElement = 0, maxDiff = 0;
+        for (long num : nums) {
+            maxTriplet = max(maxTriplet, maxDiff * num);
+            maxDiff = max(maxDiff, maxElement - num);
+            maxElement = max(maxElement, num);
+        }
+        return maxTriplet;
+    }
+};
