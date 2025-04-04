@@ -20,7 +20,7 @@ Constraints:
 1 ≤ V ≤ 105
 1 ≤ E = edges.size() ≤ 105
 
-
+Time Complexity: O(V + E)Auxiliary Space: O(V)
 
 
 
