@@ -52,9 +52,9 @@ class Solution {
 
   
 
+-- -- -- -- -- -- -- -- -Leetcode - POTD - 16 / 04 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
-
-  2537. Count the Number of Good Subarrays
+2537. Count the Number of Good Subarrays
 Solved
 Medium
 Topics
