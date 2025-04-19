@@ -15,6 +15,44 @@ Constraints:
 2 ≤ arr.size() ≤ 5*104
 1 ≤ arr[i] ≤ 106
 
+class Solution {
+    public:
+      int maxXor(vector<int> &arr) {
+          // code here
+          int n=arr.size();
+          
+          //brute force approach
+          // int ans=1;
+          // for(int i=0;i<n;i++){
+          //     for(int j=0;j<n;j++){
+          //         if(i!=j){
+          //             ans=max(ans,arr[i]^arr[j]);
+          //         }
+          //     }
+          // }
+          // return ans;
+          
+          int maxXor = 0, mask=0;
+          for(int i=31;i>=0;i--){
+              mask|=(1<<i);
+              unordered_set<int> us;
+              for(auto z : arr)
+                  us.insert(mask&z);
+              
+              int temp = maxXor|(1<<i);
+              for(auto p : us){
+                  int t = temp^p;
+                  if(us.find(t) != us.end()){
+                      maxXor = temp;
+                      break;
+                  }
+              }
+              
+          }
+          return maxXor;
+      }
+  };
+
 
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 19 / 04 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
