@@ -25,6 +25,16 @@ Expected Complexities
 Time Complexity: O(n)
 Auxiliary Space: O(1)
 
-
+class Solution {
+    public:
+      int findDuplicate(vector<int>& arr) {
+          // code here
+          int ans=0;
+          for(int i=0;i<arr.size();i++) ans^=arr[i];
+          for(int i=1;i<arr.size();i++) ans^=i;
+          return ans;
+      }
+};
+  
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 20 / 04 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
