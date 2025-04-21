@@ -22,5 +22,21 @@ Expected Complexities
 Time Complexity: O(n)
 Auxiliary Space: O(1)
 
+class Solution {
+    public:
+      int missingNum(vector<int>& arr) {
+          // code here
+          long long int n=arr.size();
+          long long int total=((n+1)*(n+2))/2;
+          long long int sum=0;
+          for(int i=0;i<n;i++)
+          {
+              sum+=arr[i];
+          }
+          long long int ans = total-sum;
+          return ans;
+      }
+  };
+
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 21 / 04 / 2025 -- -- -- -- -- -- -- -- -- -- -- -- -- -------
 
