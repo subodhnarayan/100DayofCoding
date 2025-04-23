@@ -95,3 +95,26 @@ Constraints:
 
 1 <= n <= 104
 
+class Solution {
+    public:
+        int digsum(int n) {
+            int sum = 0;
+            while (n) {
+                sum += n % 10;
+                n /= 10;
+            }
+            return sum;
+        }
+        int countLargestGroup(int n) {
+            int maxi=INT_MIN;
+            unordered_map <int,int> mpp;
+            int count=0;
+            for (int i = 1 ; i <= n ; i++) {
+                int x = digsum(i);
+                maxi = max(maxi, ++mpp[x]);
+            }
+            for (auto& p : mpp) if (p.second == maxi) ++count;
+            return count;
+        }
+};
+
