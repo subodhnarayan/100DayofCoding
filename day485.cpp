@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -Leetcode - POTD - 26 / 04 / 2025 -----------------------------------
+-- -- -- -- -- -- -- -- -GFG - POTD - 26 / 04 / 2025 -----------------------------------
 
 Is Binary Tree Heap
 Difficulty: MediumAccuracy: 34.41%Submissions: 126K+Points: 4
