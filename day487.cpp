@@ -24,6 +24,31 @@ Time Complexity: O(n)
 Auxiliary Space: O(n)
 
 
+class Solution {
+    public:
+      // Function to return the maximum sum of non-adjacent nodes.
+      int solve(Node* root,unordered_map<Node*,int>&mp){
+          if(root == nullptr)return 0;
+          if(mp.find(root) !=mp.end())return mp[root];
+          int nontake = solve(root->left,mp)+solve(root->right,mp);
+          int take = root->data;
+          if(root->left){
+              take += solve(root->left->left,mp);
+              take += solve(root->left->right,mp);
+          }
+          if(root->right){
+              take += solve(root->right->left,mp);
+              take += solve(root->right->right,mp);
+          }
+          return mp[root] = max(take,nontake);
+      }
+      int getMaxSum(Node *root) {
+          // code here
+         unordered_map<Node*,int>mp;
+          return solve(root,mp); 
+      }
+  };
+
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 29 / 04 / 2025 -----------------------------------
 
