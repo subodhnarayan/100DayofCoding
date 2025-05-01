@@ -25,7 +25,22 @@ Expected Complexities
 Time Complexity: O(n)
 Auxiliary Space: O(n)
 
-
+class Solution {
+  public:
+    
+    vector<int> nthRowOfPascalTriangle(int n) {
+        // code here
+        vector<int> ans;
+        int val=1;
+        ans.push_back(val);
+        for(int i=1;i<n;i++){
+            val=val*(n-i)/i;
+            ans.push_back(val);
+        }
+        return ans;
+        
+    }
+};
 
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 01 / 05 / 2025 -----------------------------------
