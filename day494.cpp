@@ -25,6 +25,47 @@ Time Complexity: O(log n)
 Auxiliary Space: O(1)
 
 
+class Solution {
+    public:
+      int fun(vector<int>& arr, int low, int high, int key) 
+      {
+      
+          while (low <= high) 
+          {
+              int mid = low + (high - low) / 2;
+      
+              if (arr[mid] == key) 
+              {
+                  return mid;
+              }
+              // Check left neighbor
+              if (mid > low && arr[mid - 1] == key) 
+              {
+                  return mid - 1;
+              }
+              // Check right neighbor
+              if (mid < high && arr[mid + 1] == key) 
+              {
+                  return mid + 1;
+              }
+      
+              if (arr[mid] > key) 
+              {
+                  high = mid - 2;  
+              } 
+              else 
+              {
+                  low = mid + 2;   
+              }
+          }
+      return -1;
+      }
+      int findTarget(vector<int>& arr, int target) {
+          // code here
+           return fun(arr, 0, arr.size() - 1, target);
+      }
+  };
+
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 05 / 05 / 2025 -----------------------------------
 
