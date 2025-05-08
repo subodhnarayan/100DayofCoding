@@ -24,7 +24,40 @@ Expected Complexities
 Time Complexity: O(log n)
 Auxiliary Space: O(1)
 
-
+class Solution {
+    public:
+      int findMissing(vector<int> &arr) {
+          // code here
+           int n = arr.size();
+          bool neg = arr[0] > arr[1]; // Check if AP is decreasing
+          
+          // Edge Case: If array has only 2 elements
+          if(n == 2) {
+              int rem = arr[1] - arr[0];
+              return (rem + arr[1]); // Next element in AP
+          }
+          
+          map<int,int> mp; // Store frequency of differences
+          
+          // Calculate all differences between consecutive elements
+          for(int i = 1; i < n; ++i) {
+              mp[abs(arr[i] - arr[i-1])]++;
+          }
+          
+          // The correct difference is the smallest (since the wrong difference is larger)
+          int diff = mp.begin()->first;
+          
+          // Traverse the array to find where the difference is not 'diff'
+          for(int i = 0; i < n-1; ++i) {
+              if((arr[i] + (neg ? -1 : 1)*diff) != arr[i+1]) {
+                  return (arr[i] + (neg ? -1 : 1)*diff); // Missing element
+              }
+          }
+          
+          // If no missing element found, return the next element after the last one
+          return (arr[n-1] + (neg ? -1 : 1)*diff);
+      }
+  };
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 08 / 05 / 2025 -----------------------------------
 
 
