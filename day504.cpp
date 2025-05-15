@@ -16,6 +16,25 @@ Constraints:
 1 <= |s| <= 104
 s contains lower case english alphabets
 
-
+class Solution {
+  public:
+    int countSubstring(string &s) {
+        // code here
+        unordered_map<char,int> mp;
+        int sum = 0;
+        
+        for(auto &it : s)
+        {
+            mp[it]++;
+        }
+        
+        for(auto itr = mp.begin(); itr != mp.end(); itr++)
+        {
+            int n = itr->second;
+            sum += n*(n+1)/2;
+        }
+        return sum;
+    }
+};
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 15 / 05 / 2025 ----------------------------------------
