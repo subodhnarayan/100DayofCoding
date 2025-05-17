@@ -20,6 +20,26 @@ Expected Complexities
 Time Complexity: O(n)
 Auxiliary Space: O(n)
 
+
+class Solution {
+  public:
+    vector<int> sortArray(vector<int> &arr, int A, int B, int C) {
+        // code here
+         vector<int> ans; // To store transformed values
+        
+        // Step 1: Apply quadratic transformation to each element
+        for(int x : arr){
+            long long int temp = (A * x * x) + (B * x) + C; // Compute A*(x^2) + B*x + C
+            ans.push_back((int)(temp)); // Store the result (cast to int)
+        }
+        
+        // Step 2: Sort the transformed array
+        sort(ans.begin(), ans.end());
+        
+        return ans; // Return sorted transformed array
+    }
+};
+
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 17 / 05 / 2025 ----------------------------------------
 
 
