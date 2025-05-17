@@ -72,3 +72,45 @@ Constraints:
 n == nums.length
 1 <= n <= 300
 nums[i] is either 0, 1, or 2.
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+
+        //First approach using sorting TC=0(nlogn)
+        //sort(nums.begin(),nums.end());
+
+
+        //second approach using couting TC=0(2n)
+        // int ct0=0,ct1=0,ct2=0;
+        // for(int i=0;i<nums.size();i++){
+        //     if(nums[i]==0) ct0++;
+        //     else if(nums[i]==1) ct1++;
+        //     else ct2++;
+        // }
+
+        // for(int i=0;i<ct0;i++) nums[i]=0;
+        // for(int i=ct0;i<ct0+ct1;i++) nums[i]=1;
+        // for(int i=ct0+ct1;i<nums.size();i++) nums[i]=2;
+
+
+        //Third approach using Deuthch National Flag Algorithm
+        //  TC=0(n)
+        int n=nums.size();
+        int low=0,mid=0,high=n-1;
+        while(mid<=high){   //look here first it will go to upto equal
+            if(nums[mid]==0){
+                swap(nums[low],nums[mid]);
+                low++,mid++;
+            }
+            else if(nums[mid]==1){
+                mid++;
+            }
+            else{
+                swap(nums[mid],nums[high]);
+                high--;
+            }
+        }
+
+    }
+};
