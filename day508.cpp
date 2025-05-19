@@ -37,6 +37,20 @@ Constraints:
 nums.length == 3
 1 <= nums[i] <= 100
 
-
+class Solution {
+public:
+    string triangleType(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        if (nums[0] + nums[1] <= nums[2]) {
+            return "none";
+        } else if (nums[0] == nums[2]) {
+            return "equilateral";
+        } else if (nums[0] == nums[1] || nums[1] == nums[2]) {
+            return "isosceles";
+        } else {
+            return "scalene";
+        }
+    }
+};
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 19 / 05 / 2025 ----------------------------------------
