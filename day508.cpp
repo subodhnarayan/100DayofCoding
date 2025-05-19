@@ -29,6 +29,63 @@ Expected Complexities
 Time Complexity: O(Height of the BST)
 Auxiliary Space: O(1)
 
+class Solution {
+  public:
+   //lets look for a better solution
+  Node* l = nullptr;
+  Node* r = nullptr;
+  
+   void solve(Node* node, int key){
+       if(!node) return;
+       if(node->data<key){
+           if(!l) l = node;
+           else if(l && l->data<node->data) l = node;
+       }
+       
+       else if(node->data>key){
+           if(!r) r = node;
+           else if(r && r->data>node->data) r = node;
+       }
+       
+       solve(node->left,key);
+       solve(node->right,key);
+   }
+    vector<Node*> findPreSuc(Node* root, int key) {
+        // code here
+        solve(root,key);
+      
+      while(root){
+          if(root->data==key){
+              if(root->left){
+                  Node* temp = root->left;
+                  while(temp->right) temp = temp->right;
+                  l = temp;
+              }
+              
+              if(root->right){
+                  Node* temp = root->right;
+                  while(temp->left) temp = temp->left;
+                  r = temp;
+              }
+              
+              break;
+          }
+          
+          else if(root->data<key){
+              l = root;
+              root = root->right;
+          }
+          
+          else{
+              r = root;
+              root = root->left;
+          }
+      }
+        
+         return {l,r};
+    }
+};
+
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 19 / 05 / 2025 ----------------------------------------
 3024. Type of Triangle
