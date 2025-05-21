@@ -96,3 +96,95 @@ Follow up:
 A straightforward solution using O(mn) space is probably a bad idea.
 A simple improvement uses O(m + n) space, but still not the best solution.
 Could you devise a constant space solution?
+
+class Solution {
+public:
+    void makezero(int m,int n,int row,int col,vector<vector<int>> &mat){
+        for(int k=0;k<row;k++){
+         mat[k][n]=0;
+        }
+        for(int k=0;k<col;k++){
+         mat[m][k]=0;
+        }
+    }
+
+    
+    void setZeroes(vector<vector<int>>& mat) {
+        int row=mat.size();
+        int col=mat[0].size();
+        //First Approach using 0(M*N);
+        // vector<vector<int>> an(mat.begin(),mat.end());
+        // for(int i=0;i<row;i++){
+        //     for(int j=0;j<col;j++){
+        //         if(an[i][j]==0){
+        //             makezero(i,j,row,col,mat);
+        //         }
+        //     }
+        // }
+
+        //second appraoch using space o(m+n)
+        // vector<int> cl(col,0);
+        // vector<int> rw(row,0);
+        
+        // for(int i=0;i<row;i++){
+        //     for(int j=0;j<col;j++){
+        //         if(mat[i][j]==0){
+        //             rw[i]=1;
+        //             cl[j]=1;
+        //         }
+        //     }
+        // }
+
+        // for(int i=0;i<row;i++){
+        //     for(int j=0;j<col;j++){
+        //         if(mat[i][j]!=0 && (rw[i]==1 || cl[j]==1)){
+        //             mat[i][j]=0;
+        //         }
+        //     }
+        // }
+
+
+        //third approach using space o(1)
+        
+        int col0=1;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(mat[i][j]==0){
+                    mat[i][0]=0;
+                    if(j!=0)
+                    mat[0][j]=0;
+                    else
+                    col0=0;
+                }
+            }
+        }
+
+
+        for(int i=1;i<row;i++){
+            for(int j=1;j<col;j++){
+                if(mat[i][j]==0 || (mat[0][j]==0 || mat[i][0]==0)){
+                    mat[i][j]=0;
+                }
+            }
+        }
+
+        //now first solving in column because row arr is dependent on col
+        if(mat[0][0]==0){
+            for(int i=0;i<col;i++){
+                mat[0][i]=0;
+            }
+        }
+
+        if(col0==0){
+            for(int i=0;i<row;i++){
+                mat[i][0]=0;
+            }
+        }
+
+
+
+
+        
+
+    }
+};
