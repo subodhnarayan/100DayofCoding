@@ -100,3 +100,26 @@ Constraints:
 1 <= words.length <= 105
 words[i].length == 2
 words[i] consists of lowercase English letters.
+
+class Solution {
+public:
+    int longestPalindrome(vector<string>& words) {
+         vector<vector<int>> mpp(26, vector<int>(26, 0));
+        int middle = 0;
+        int count=0;
+        for (auto &s : words) {
+            int x = s[0] - 'a', y = s[1] - 'a';
+            if (mpp[y][x] > 0) {
+                mpp[y][x]--;
+                count += 4;
+                if (x == y) middle--;
+            } else {
+                mpp[x][y]++;
+                if (x == y) middle++;
+            }
+        }
+
+        if (middle > 0) count += 2;
+        return count;
+    }
+};
