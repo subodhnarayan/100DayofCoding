@@ -1,4 +1,4 @@
--- -- -- -- -- -- -- -- -GFG - POTD - 23 / 05 / 2025 ----------------------------------------
+-- -- -- -- -- -- -- -- -GFG - POTD - 24 / 05 / 2025 ----------------------------------------
 
 Sum of all substrings of a number
 Difficulty: MediumAccuracy: 38.11%Submissions: 66K+Points: 4
@@ -25,7 +25,7 @@ Time Complexity: O(n)
 Auxiliary Space: O(1)
 
 
--- -- -- -- -- -- -- -- -Leetcode - POTD - 23 / 05 / 2025 ----------------------------------------
+-- -- -- -- -- -- -- -- -Leetcode - POTD - 24 / 05 / 2025 ----------------------------------------
 
 2942. Find Words Containing Character
 Solved
