@@ -23,7 +23,40 @@ Expected Complexities
 Time Complexity: O(n)
 Auxiliary Space: O(1)
 
-
+class Solution {
+  public:
+    Node* sortedInsert(Node* head, int data) {
+        // code here
+        Node* tail=head;
+        while(tail->next!=head) tail=tail->next;
+        
+        if(data<head->data){
+            Node* node=new Node(data);
+            node->next=head;
+            tail->next=node;
+            return node;
+        }
+        
+        if(data>tail->data){
+            Node* node=new Node(data);
+            tail->next=node;
+            node->next=head;
+            return head;
+        }
+        
+        Node* temp=head;
+        Node* prev=NULL;
+        while(data>temp->data){
+            prev=temp;
+            temp=temp->next;
+        }
+        
+          Node* node=new Node(data);
+          prev->next=node;
+          node->next=temp;
+          return head;
+    }
+};
 
 
 
