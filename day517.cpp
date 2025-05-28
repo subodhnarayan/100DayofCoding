@@ -26,5 +26,25 @@ Expected Complexities
 Time Complexity: O(n * (m^2))
 Auxiliary Space: O(n)
 
+class Solution {
+  public:
+    bool ValidCorner(vector<vector<int> >& a) {
+        // code here
+        int n=a.size();
+        int m=a[0].size();
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                int temp=0;
+                for(int k=0;k<m;k++){
+                    if(a[i][k]&&a[j][k])temp++;
+                }
+                if(temp>=2) return true;
+            }
+        }
+        
+        return false;
+    }
+};
+
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 28 / 05 / 2025 ----------------------------------------
 
