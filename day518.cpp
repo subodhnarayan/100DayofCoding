@@ -28,7 +28,25 @@ Expected Complexities
 Time Complexity: O(h)
 Auxiliary Space: O(h)
 
-
+class Solution {
+  public:
+    int ans=-1;
+  void Solve(Node* root,int k){
+      if(root==NULL)
+      return;
+      if(root->data<=k){
+          ans=root->data;
+          Solve(root->right,k);
+      }
+      else
+      Solve(root->left,k);
+  }
+    int findMaxFork(Node* root, int k) {
+        // code here
+          Solve(root,k);
+        return ans;
+    }
+};
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 30 / 05 / 2025 ----------------------------------------
 
