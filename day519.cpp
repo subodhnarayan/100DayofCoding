@@ -20,4 +20,26 @@ Expected Complexities
 Time Complexity: O(n * log (mat[i][j] ))
 Auxiliary Space: O(1)
 
+
+class Solution {
+  public:
+    int kthSmallest(vector<vector<int>> &matrix, int k) {
+        // code here
+         int m=matrix.size();
+        int n=m*m;
+        int arr[n];
+        int a=0;
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<m;j++)
+        {
+            arr[a++]=matrix[i][j];
+        }
+            
+        }
+        sort(arr,arr+a);
+        return arr[k-1];
+    }
+};
+
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 31 / 05 / 2025 ----------------------------------------
