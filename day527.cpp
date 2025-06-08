@@ -1,48 +1,39 @@
 -- -- -- -- -- -- -- -- -GFG - POTD - 08 / 06 / 2025 ----------------------------------------
-Longest Span in two Binary Arrays
-Difficulty: MediumAccuracy: 48.22%Submissions: 20K+Points: 4
-Given two binary arrays, a1[] and a2[]. Find the length of longest common span (i, j) where j>= i such that a1[i] + a1[i+1] + .... + a1[j] =  a2[i] + a2[i+1] + ... + a2[j].
+Sum-string
+Difficulty: HardAccuracy: 50.56%Submissions: 40K+Points: 8
+Given a string s consisting of digits, determine whether it can be classified as a sum-string.
+
+A sum-string is a string that can be split into more than two non-empty substrings such that:
+
+
+The rightmost substring is equal to the sum of the two substrings immediately before it (interpreted as integers).
+
+This condition must apply recursively to the substrings before it.
+
+The rightmost substring (and any number in the sum) must not contain leading zeroes, unless the number is exactly '0'.
 
 Examples:
 
-Input: a1[] = [0, 1, 0, 0, 0, 0], a2[] = [1, 0, 1, 0, 0, 1]
-Output: 4
-Explanation: The longest span with same sum is from index 1 to 4 following zero based indexing.
-Input: a1[] = [0, 1, 0, 1, 1, 1, 1], a2[] = [1, 1, 1, 1, 1, 0, 1]
-Output: 6
-Explanation: The longest span with same sum is from index 1 to 6 following zero based indexing.
+Input: s = "12243660"
+Output: true
+Explanation: The string can be split as {"12", "24", "36", "60"} where each number is the sum of the two before it:
+36 = 12 + 24, and 60 = 24 + 36. Hence, it is a sum-string.
+Input: s = "1111112223"
+Output: true
+Explanation: Split the string as {"1", "111", "112", "223"}, where:
+112 = 1 + 111 and 223 = 111 + 112. Hence, it follows the sum-string rule.
+Input: s = "123456"
+Output: false
+Explanation: There is no valid split of the string such that each part satisfies the sum-string property recursively.
 Constraints:
-1 <= a1.size() = a2.size() <= 106
-0 <= a1[i], a2[i] <= 1
+1 ≤ s.size() ≤ 100
+String consists of characters from '0' to '9'.
 
 Expected Complexities
-Time Complexity: O(n)
+Time Complexity: O(n^3)
 Auxiliary Space: O(n)
 
-class Solution {
-  public:
-    int longestCommonSum(vector<int> &a1, vector<int> &a2) {
-        // Code here.
-        int n=a1.size();
-        unordered_map<int,int> mpp;
-        
-        int sum=0;
-        int maxi=0;
-        
-        mpp[0]=-1;
-        
-        for(int i=0;i<n;i++){
-            sum+=(a1[i]-a2[i]);
-            if(mpp.find(sum)!=mpp.end()){
-                maxi=max(maxi,i-mpp[sum]);
-            }
-            else{
-                mpp[sum]=i;
-            }
-        }
-        return maxi;
-    }
-};
+
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 08 / 06 / 2025 ----------------------------------------
 
 3170. Lexicographically Minimum String After Removing Stars
