@@ -102,77 +102,30 @@ class Solution {
 
 -- -- -- -- -- -- -- -- -Leetcode - POTD - 08 / 06 / 2025 ----------------------------------------
 
-3170. Lexicographically Minimum String After Removing Stars
+386. Lexicographical Numbers
 Solved
 Medium
 Topics
 premium lock icon
 Companies
-You are given a string s. It may contain any number of '*' characters. Your task is to remove all '*' characters.
+Given an integer n, return all the numbers in the range [1, n] sorted in lexicographical order.
 
-While there is a '*', do the following operation:
-
-Delete the leftmost '*' and the smallest non-'*' character to its left. If there are several smallest characters, you can delete any of them.
-Return the lexicographically smallest resulting string after removing all '*' characters.
+You must write an algorithm that runs in O(n) time and uses O(1) extra space. 
 
  
 
 Example 1:
 
-Input: s = "aaba*"
-
-Output: "aab"
-
-Explanation:
-
-We should delete one of the 'a' characters with '*'. If we choose s[3], s becomes the lexicographically smallest.
-
+Input: n = 13
+Output: [1,10,11,12,13,2,3,4,5,6,7,8,9]
 Example 2:
 
-Input: s = "abc"
-
-Output: "abc"
-
-Explanation:
-
-There is no '*' in the string.
-
+Input: n = 2
+Output: [1,2]
  
 
 Constraints:
 
-1 <= s.length <= 105
-s consists only of lowercase English letters and '*'.
-The input is generated such that it is possible to delete all '*' characters.
-
-
-class Solution {
-public:
-    string clearStars(string s) {
-        vector<stack<int>> cnt(26);
-        for(int i=0;i<s.size();i++){
-            if(s[i]!='*'){
-                cnt[s[i]-'a'].push(i);
-            }
-            else{
-                for(int j=0;j<26;j++){
-                    if(!cnt[j].empty()){
-                        s[cnt[j].top()]='*';
-                        cnt[j].pop();
-                        break;
-                    }
-                }
-            }
-        }
-
-        string ans;
-        for(int i=0;i<s.size();i++){
-            if(s[i]!='*'){
-                ans.push_back(s[i]);
-            }
-        }
-        return ans;
-    }
-};
+1 <= n <= 5 * 104
 
 
