@@ -80,3 +80,26 @@ Constraints:
 
 1 <= arr.length <= 500
 1 <= arr[i] <= 500
+
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+         unordered_map<int, int> freq;
+
+    // Count frequency of each number
+    for (int num : arr) {
+        freq[num]++;
+    }
+
+    int result = -1;
+
+    // Check for lucky numbers
+    for (auto& pair : freq) {
+        if (pair.first == pair.second) {
+            result = max(result, pair.first);
+        }
+    }
+
+    return result;
+    }
+};
